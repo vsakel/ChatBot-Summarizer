@@ -1,0 +1,29 @@
+name: CI Pipe 
+
+on:
+  push:
+    branches:
+      - main  
+  pull_request:  
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest  
+    
+    steps:
+      - name: Checkout Code  
+        uses: actions/checkout@v3  
+
+      - name: Set up Docker Buildx  
+        uses: docker/setup-buildx-action@v2  # Version 2 of the setup-buildx action
+
+      - name: Build Docker Images 
+        run: docker-compose build  
+
+      - name: Start Services  
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # Inject the OpenAI API Key as an env variable
+        run: docker-compose up -d  
+
+      - name: Stop Services  
+        run: docker-compose down  
