@@ -28,7 +28,7 @@ jobs:
 
       - name: Run tests with pytest
         run: |
-          pytest backend/  
+          pytest backend/app  
 
 
 # name: CI Pipeline
@@ -55,7 +55,7 @@ jobs:
 
 #       - name: Start Services
 #         env:
-#           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # Inject the OpenAI API Key as an env variable at runtime
+          # OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # Inject the OpenAI API Key as an env variable at runtime
 #         run: docker-compose up -d
 
 #       - name: Stop Services

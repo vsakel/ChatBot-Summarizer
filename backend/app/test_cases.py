@@ -23,7 +23,7 @@ def test_no_file(client):
 
 def test_invalid_extension(client):
     """Test an invalid file type (not PDF) upload"""
-    with open('app/summary.txt', 'rb') as txt:  
+    with open('backend/app/summary.txt', 'rb') as txt:  
         data = {"userfile": (txt, "summary.txt")}
         response = client.post('/summarize', data=data, content_type='multipart/form-data')
         assert response.status_code == 400
@@ -32,7 +32,7 @@ def test_invalid_extension(client):
 
 def test_valid_extesnsion(client):
     """Test a valid PDF file upload"""
-    with open('app/invoice.pdf', 'rb') as pdf:  # Provide a valid PDF file path
+    with open('backend/app/invoice.pdf', 'rb') as pdf:  # Provide a valid PDF file path
         data = {'userfile': (pdf, 'invoice.pdf')}
         response = client.post('/summarize', data=data, content_type='multipart/form-data')
         assert response.status_code == 200

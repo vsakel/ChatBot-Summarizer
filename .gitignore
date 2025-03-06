@@ -3,3 +3,4 @@ backend/app/__pycache__
 backend/uploads
 backend/app/.env
 backend/.pytest_cache
+.pytest_cache
