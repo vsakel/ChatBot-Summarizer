@@ -30,7 +30,7 @@ def test_invalid_extension(client):
         json_data = response.get_json()
         assert json_data['error'] == 'Invalid file type. Please upload a PDF file.'
 
-def test_valid_extesnsion(client):
+def test_valid_extension(client):
     """Test a valid PDF file upload"""
     with open('backend/app/invoice.pdf', 'rb') as pdf:  # Provide a valid PDF file path
         data = {'userfile': (pdf, 'invoice.pdf')}
