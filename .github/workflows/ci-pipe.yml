@@ -28,8 +28,7 @@ jobs:
 
       - name: Run tests with pytest
         run: |
-          pytest backend/app/test_cases.py  
-        working-directory: ./backend/app  
+          pytest backend/  
 
 
 # name: CI Pipeline
