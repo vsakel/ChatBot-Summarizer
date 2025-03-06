@@ -1,0 +1,22 @@
+services:
+  api:
+    env_file: ./.env
+    build:
+      context: ./backend 
+    ports:
+      - $API_LOCAL_PORT:$API_DOCKER_PORT 
+    networks:
+      - ui-api-network
+  chatbot_ui:
+    env_file: ./.env
+    build:
+      context: ./frontend 
+    ports:
+      - $REACT_LOCAL_PORT:$REACT_DOCKER_PORT  
+    depends_on:
+      - api
+    networks:
+      - ui-api-network
+
+networks:
+  ui-api-network:

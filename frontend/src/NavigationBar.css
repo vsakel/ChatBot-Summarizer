@@ -1,0 +1,25 @@
+
+/* Style for the navbar */
+.navbar {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  background-color:black; /* Set a background color */
+}
+
+/* Style for each list item (nav links) */
+.navbar li {
+  display: inline-block; /* Display list items inline */
+}
+
+/* Style for links inside the navbar */
+.navbar li a {
+  color: white; /* Set text color */
+  text-decoration: none; /* Remove underline from links */
+  padding: 15px 20px; /* Add padding for spacing */
+  display: block; /* Make links block-level for padding to work */
+}
+
+/* Hover effect for links */
+.navbar li a:hover {
+  background-color: grey; /* Change background color on hover */
+}

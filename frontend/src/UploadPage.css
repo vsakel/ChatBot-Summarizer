@@ -1,0 +1,58 @@
+.upload-container {
+  margin: 15px auto;
+  padding: 15px 20px; /* Add padding inside the container */
+  background-color:lightgrey;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  max-width: 400px; /* Maximum width of 600px */
+  min-height: 100px; 
+}
+
+.upload-container form {
+  display: flex;
+  flex-direction: column; /* Stack the elements vertically */
+  align-items: center; /* Center form elements */
+}
+
+
+.user-file {
+  font-size: 16px; /* Adjust the font size */
+  cursor: pointer; /* Make the cursor a pointer when hovering */
+  margin-bottom:20px;
+}
+
+.button-container {
+  display: flex; /* Enables Flexbox */
+  flex-direction: row; /* Default: Aligns children in a row */
+  gap: 30px; /* Adds space between items */
+}
+
+.upload-container button {
+  padding: 12px 20px; /* Button padding */
+  background-color: rgb(16, 81, 133); /* Green button */
+  color: white; /* White text */
+  font-size: 16px; /* Button text size */
+  border: none; /* Remove default button border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.upload-container button:hover {
+  background-color: #171a18; /* Darker green when button is hovered */
+}
+
+.message-container {
+  margin: auto; 
+  background-color:skyblue;
+  max-width: 500px; /* Maximum width of 600px */
+  text-align: center;
+  word-wrap: break-word;   /* Wrap long words to avoid overflow */
+   
+}
+
+.message-container p {
+  color: black; /* Red color for message */
+  font-size: 18px; /* Slightly smaller text */
+  line-height: 1.6;  
+
+}
