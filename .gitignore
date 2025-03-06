@@ -1,4 +1,5 @@
 backend/env_virtual
-backend/__pycache__
+backend/app/__pycache__
 backend/uploads
 backend/app/.env
+backend/.pytest_cache

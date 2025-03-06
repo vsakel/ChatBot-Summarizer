@@ -15,14 +15,14 @@ def test_api_start(client):
     assert response.status_code == 200
     assert response.json == {"message": "Backend is running"}
 
-def test_no_file_upload(client):
-    """Test when no file is uploaded"""
-    response = client.post('/summarize', data={})  # No file sent
+def test_no_file(client):
+    """Test no file reach the server due to network issue, file corruption, or browser bugs"""
+    response = client.post('/summarize', data={})  # No file attached
     assert response.json == {"error": "No file attached."},400
 
 
-def test_invalid_file_extension(client):
-    """Test that an invalid file type (not PDF) results in a 400 error"""
+def test_invalid_extension(client):
+    """Test an invalid file type (not PDF) upload"""
     with open('app/summary.txt', 'rb') as txt:  
         data = {"userfile": (txt, "summary.txt")}
         response = client.post('/summarize', data=data, content_type='multipart/form-data')
@@ -30,7 +30,7 @@ def test_invalid_file_extension(client):
         json_data = response.get_json()
         assert json_data['error'] == 'Invalid file type. Please upload a PDF file.'
 
-def test_valid_pdf_upload(client):
+def test_valid_extesnsion(client):
     """Test a valid PDF file upload"""
     with open('app/invoice.pdf', 'rb') as pdf:  # Provide a valid PDF file path
         data = {'userfile': (pdf, 'invoice.pdf')}

@@ -1,7 +1,0 @@
-env_virtual/
-__pycache__/
-uploads/
-*.pyc
-*.pyo
-*.pyd
-.git/
