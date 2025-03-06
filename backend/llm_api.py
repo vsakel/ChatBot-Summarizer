@@ -5,7 +5,6 @@ import os
 
 load_dotenv(override=True)
 api_key = os.getenv('OPENAI_API_KEY')
-model = os.getenv('MODEL')
 
 system_prompt = """ 
     You are an assistant that analyze tax related documents and generate a short summary.
@@ -25,7 +24,7 @@ user_prompt = """
 def generate_summary(file_path):
     augmented_prompt = user_prompt + parse_file(file_path) 
     response = openai.chat.completions.create(
-        model=model,
+        model='gpt-4o-mini',
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": augmented_prompt}
