@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom';
 import './HomePage.css';
 
+// HomePage is a function component that renders the Home page, the root endpoint of our application
 function HomePage() {
     return (
     <div className='homepage'>
-        <h1>Welcome to Tax Documents Summarizer Application</h1>
+        <h1>Welcome to the Tax Documents Summarizer</h1>
         <p>
-            This is an AI-powered Application, where you can upload a file and the system generates a summary.<br/>
-            You can easy upload your file from Upload section in Navigation Bar.
+            This is an AI-powered Application, that simplifies tax document processing. 
+            Upload your files, and the system will generate clear, 
+            concise summaries to help you better understand your documents.<br/>
+            Let's get started by submit your file using Upload section.
         </p>
         <Link to="/upload"><button>Start</button></Link>
     </div>

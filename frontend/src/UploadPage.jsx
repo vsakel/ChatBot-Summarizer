@@ -4,7 +4,7 @@ import './UploadPage.css';
 
 function UploadPage() {
 
-// UploadPage is a function component that renders the Upload section, handles file uploads and prints the summary. 
+// UploadPage is a function component that renders the Upload page, handles file uploads and prints the summary. 
 
 // State Variables:
 // - file: Stores the user's selected file.

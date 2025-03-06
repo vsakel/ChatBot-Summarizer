@@ -4,6 +4,7 @@ import NavigationBar from './NavigationBar.jsx';
 import UploadPage from './UploadPage.jsx';
 import HomePage from './HomePage.jsx';
 
+// main component of our application
 function App() {
   return (
   <BrowserRouter>

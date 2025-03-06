@@ -15,7 +15,7 @@
 .homepage p {
     font-size: 20px;
     line-height: 1.5;
-    max-width: 80%; /* Limit the width */
+    max-width: 60%; /* Limit the width */
     margin: 0 auto; /* Center the paragraph horizontally */
     color: black;
     text-align: center; /* Center the text inside the paragraph */
