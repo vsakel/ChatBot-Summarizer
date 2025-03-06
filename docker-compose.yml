@@ -2,7 +2,7 @@ services:
   api:
     env_file: ./.env
     build:
-      context: ./backend 
+      context: ./backend/app 
     ports:
       - $API_LOCAL_PORT:$API_DOCKER_PORT 
     networks:

@@ -6,18 +6,15 @@ import os
 load_dotenv(override=True)
 api_key = os.getenv('OPENAI_API_KEY')
 
-system_prompt = """ 
-    You are an assistant that analyze tax related documents and generate a short summary.
+system_prompt = """ You are an assistant that analyze tax related documents and generate a short summary.
     You should follow these instructions:
     - Keep the summary concise, focusing only on the most important details.
     - Highlight the points you think most important. 
     - If document contains unclear information highlight it, but avoid making assumptions.
-    - Respond in markdown.
-    """
-user_prompt = """
-    You are looking at a document. The content of this document is as follows.
-    Please provide a short summary.\n
-"""
+    - Respond in markdown."""
+    
+user_prompt = """You are looking at a document. The content of this document is as follows.
+    Please provide a short summary.\n"""
 
 # we communicate with openai endpoint and send the parsed text 
 # and with prompt engineering we leverage the summarize ability of model

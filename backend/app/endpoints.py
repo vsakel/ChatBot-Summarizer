@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
-from parse import parse_file
 from llm_api import generate_summary
 
 # during develompent of backend api endpoint
@@ -24,22 +23,28 @@ from llm_api import generate_summary
 # 500 for unexpected errors on the server side that the client has no control over 
 # (e.g., issues with file saving or parsing).
 
-app = Flask(__name__)
+
+app = Flask(__name__)    
 # enable CORS so frontend can get the response of backend enpoint
 CORS(app, resources={r"/summarize": {"origins": "http://localhost:5173"}})
 # CORS(app)
 
 
 # we need to store the file so we can use pymupdf4llm library to parse pdfs
-upload_folder = 'uploads/'
-if not os.path.exists(upload_folder):
-    os.makedirs(upload_folder)
+app.config['UPLOADER_FOLDER'] = 'uploads/'
+if not os.path.exists(app.config['UPLOADER_FOLDER'] ):
+    os.makedirs(app.config['UPLOADER_FOLDER'] )
+
+@app.route('/', methods=['GET'])
+def test():
+    return jsonify({"message": "Backend is running"})
 
 @app.route('/summarize',methods=['POST'])
 def summarize():
     # check it because we can have
     # The file does not properly attach due to a network issue, file corruption, or browser bugs.
     try:
+        file_path = None
         if 'userfile' not in request.files:
             return jsonify({"error": "No file attached."}), 400
         file = request.files['userfile']
@@ -48,7 +53,7 @@ def summarize():
         file_extension = file_name.split('.')[-1].lower()
         if file_extension not in files_allowed:
             return jsonify({"error": "Invalid file type. Please upload a PDF file."}), 400
-        file_path = os.path.join(upload_folder,file_name)
+        file_path = os.path.join(app.config['UPLOADER_FOLDER'] ,file_name)
         file.save(file_path)
         # call the llm to generate a summary
         summary = generate_summary(file_path)
@@ -62,7 +67,7 @@ def summarize():
         # we have to return the status 
         # code, because jsonify return 200 even if an error happens
     finally:
-        if os.path.exists(file_path):
+        if file_path and os.path.exists(file_path):
             os.remove(file_path)
 
 

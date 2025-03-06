@@ -1,4 +1,4 @@
 backend/env_virtual
 backend/__pycache__
 backend/uploads
-backend/.env
+backend/app/.env
