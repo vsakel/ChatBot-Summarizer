@@ -30,7 +30,7 @@ You should have the following installed:
 
 ### Running the Application
 - Start the development server: `npm run dev`  
- -**Application runs on http://localhost:5173/**
+ - **Application runs on http://localhost:5173/**
 
 ## API Documentation
 
@@ -70,7 +70,7 @@ You should have the following installed:
 
 ### Running the Application
 - Start the development server: `python endpoints.py`
- -**Backend runs on http://localhost:5000/**
+ - **Backend runs on http://localhost:5000/**
 
 ## LLM Integration
 
