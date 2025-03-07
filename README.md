@@ -25,11 +25,11 @@ You should have the following installed:
 
 ### Installation
 1) Clone the repository
-2) Moce to fronted folder: `cd frontend`
+2) Move to fronted folder: `cd frontend`
 3) Install depedencies: `npm install`
 
 ### Running the Application
-- start the development server: `npm run dev`  
+- Start the development server: `npm run dev`  
 
   **Application runs on http://localhost:5173/**
 
@@ -70,7 +70,7 @@ You should have the following installed:
    
 
 ### Running the Application
-- start the development server: `python endpoints.py`
+- Start the development server: `python endpoints.py`
 
   **Backend runs on http://localhost:5000/**
 
@@ -128,13 +128,13 @@ You should have installed:
 ### Build and run Docker containers
 To build and run the multi-container architecture, we will run the following command, in the root project directory.
 
-`docker-compose up -d
+`docker-compose up -d`
 
 **Note**: We run the containers in detached mode (-d flag), so our containers run in the background.
  
 
 ### Access the services Locally
-Once the containers are up and running, we can acess the services at the following URLs:
+Once the containers are up and running, we can access the services at the following URLs:
 - Frontend: http://localhost:5173
 - Backend: http://localhost:5000
 
