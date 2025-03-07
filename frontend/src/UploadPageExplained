@@ -55,7 +55,7 @@ function UploadPage() {
       } 
       // The else block checks the response status returned by the server. It is not related to the network error, 
       // but rather the logic of the server's response after successfully receiving the request.
-      // it habdles HTTP errors where the server responds, but something went wrong on the server side, 
+      // it handles HTTP errors where the server responds, but something went wrong on the server side, 
       // or the request was invalid in some way
       // 404 status code: This status means that the server could not find the requested resource. For example, 
       // the URL or endpoint you tried to access does not exist on the server

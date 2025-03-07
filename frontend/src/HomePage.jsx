@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './HomePage.css';
 
-// HomePage is a function component that renders the Home page, the root endpoint of our application
+// HomePage is a function component that renders the Home page, the root page of our application
 function HomePage() {
     return (
     <div className='homepage'>

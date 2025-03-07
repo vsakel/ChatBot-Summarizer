@@ -3,6 +3,10 @@ from dotenv import load_dotenv
 import openai
 import os
 
+# The module that integrates the LLM in our backend
+# We communicate with openai endpoint and send the parsed text.
+# Also, we use prompt engineering to leverage the ability of model to summarize
+
 load_dotenv(override=True)
 api_key = os.getenv('OPENAI_API_KEY')
 
@@ -16,8 +20,7 @@ system_prompt = """ You are an assistant that analyze tax related documents and 
 user_prompt = """You are looking at a document. The content of this document is as follows.
     Please provide a short summary.\n"""
 
-# we communicate with openai endpoint and send the parsed text 
-# and with prompt engineering we leverage the summarize ability of model
+
 def generate_summary(file_path):
     augmented_prompt = user_prompt + parse_file(file_path) 
     response = openai.chat.completions.create(

@@ -1,7 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import './Summary.css';
-// need to install react-markdown
 
+// Renders the generated summary in Markdown format
 function Summary(props) {
 
     // We store the summary in the state of the UploadPage component. 

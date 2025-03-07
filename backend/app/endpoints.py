@@ -3,34 +3,28 @@ from flask_cors import CORS
 import os
 from llm_api import generate_summary
 
-# during develompent of backend api endpoint
-# i had faced 2 problems
-# 1) CORS problem
-# 2) to use pymupdf4llm and parse the file as markdown i had to save the file in server so i can parse it
-# because library needs the filepath
+# This Flask module provides an API for summarizing PDF files using an external 
+# function (generate_summary) that integrates an LLM. 
+# The module includes error handling for missing files, incorrect formats, 
+# and unexpected server errors.
 
-# That's way we need to store it 
-# If the file needs to be processed in some way 
-# (e.g., for summarization, text extraction, or any analysis), 
-# you may temporarily store it to access it later during processing.
-# For example, if you're summarizing a document, you might need 
-# to store it on the server temporarily to read and process its contents.
+# Status codes for errors:
+# 400 status code, informs us for cases where the client sends a bad request (incorrect file type or no file attached).
+# 500 status code, informs us for unexpected errors on the server side that the client has no control.
 
-# why we use 400 and 500 statuts code in errors
-# In your route, you correctly use:
-
-# 400 for cases where the client sends a bad request (incorrect file type or no file attached).
-# 500 for unexpected errors on the server side that the client has no control over 
-# (e.g., issues with file saving or parsing).
+# we enable CORS so frontend can get the response of backend enpoint.
+# we enable the HTTP requests when we reach the endpoint from localhost 
+# and when we reach from frontend container using the internal DNS name of service == chatbot_ui
 
 
 app = Flask(__name__)    
-# enable CORS so frontend can get the response of backend enpoint
-CORS(app, resources={r"/summarize": {"origins": "http://localhost:5173"}})
+
+
+CORS(app, resources={r"/summarize": {"origins": ["http://localhost:5173", "http://chatbot_ui:5173"]}})
 # CORS(app)
 
 
-# we need to store the file so we can use pymupdf4llm library to parse pdfs
+# we need to store the file so we can use pymupdf4llm library to for parsing
 app.config['UPLOADER_FOLDER'] = 'uploads/'
 if not os.path.exists(app.config['UPLOADER_FOLDER'] ):
     os.makedirs(app.config['UPLOADER_FOLDER'] )
@@ -41,10 +35,10 @@ def test():
 
 @app.route('/summarize',methods=['POST'])
 def summarize():
-    # check it because we can have
-    # The file does not properly attach due to a network issue, file corruption, or browser bugs.
+     # try-except block captures errors that happen during the execution of route
     try:
         file_path = None
+        # The file may not properly attach due to a network issue, file corruption, or browser bugs.
         if 'userfile' not in request.files:
             return jsonify({"error": "No file attached."}), 400
         file = request.files['userfile']
@@ -55,21 +49,14 @@ def summarize():
             return jsonify({"error": "Invalid file type. Please upload a PDF file."}), 400
         file_path = os.path.join(app.config['UPLOADER_FOLDER'] ,file_name)
         file.save(file_path)
-        # call the llm to generate a summary
-        summary = generate_summary(file_path)
-        # Return the summary generated as a JSON response
-        return jsonify({"summary": summary})       
-    # try-except block captures errors that happen during the execution of route
-    # for example if there is no folder to save the file we process
-    # an error occurs 
+        summary = generate_summary(file_path) # call the llm integration function to generate a summary
+        return jsonify({"summary": summary})  # Return the summary generated as a JSON response      
     except Exception as e:
         return jsonify({"error": f"An unexpected error occurred: {str(e)}"}), 500 
-        # we have to return the status 
-        # code, because jsonify return 200 even if an error happens
+        # we have to return the status code, because jsonify return 200 even if an error happens
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
-
 
 if __name__ == '__main__':
     app.run(debug=True,port=5000)

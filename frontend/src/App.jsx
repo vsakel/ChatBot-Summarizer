@@ -4,7 +4,8 @@ import NavigationBar from './NavigationBar.jsx';
 import UploadPage from './UploadPage.jsx';
 import HomePage from './HomePage.jsx';
 
-// main component of our application
+// The core component of the application that 
+// acts as a container for the two main pages, managing the routing between them
 function App() {
   return (
   <BrowserRouter>
