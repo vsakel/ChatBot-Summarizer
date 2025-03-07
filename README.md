@@ -99,9 +99,7 @@ We integrate the LLM using the followed pipeline:
       Respond in markdown.
    - Also we declare a user prompt that tells the model to summarize a specific document
   
-     Our **user prompt**:
-     
-    `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
+     Our **user prompt**: `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
    
 3) Creating **augmented prompt**.
    - Augmented prompt, combines parsed document text with the user prompt.   
