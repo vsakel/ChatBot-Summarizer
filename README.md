@@ -149,7 +149,9 @@ export default defineConfig({
 });
 ```
 
-To access backend container, we need to include `--host=0.0.0.0` when running Flask. So it listen on any other network the container is connected to. 
+To access backend container, we need to include `--host=0.0.0.0` when running Flask (`flask run --host=0.0.0.0 `).
+
+So it listen on any other network the container is connected to. 
 
 ### Prerequisites
 You should have installed:
