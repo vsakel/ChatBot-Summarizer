@@ -23,11 +23,11 @@ You should have the following installed:
 
 ### Installation
 1) Clone the repository
-2) cd frontend
-3) Install depedencies: npm install
+2) `cd frontend`
+3) Install depedencies: `npm install`
 
 ### Running the Application
-- start the development server: npm run dev  
+- start the development server: `npm run dev`  
 
   **Application runs on http://localhost:5173/**
 
@@ -61,14 +61,14 @@ You should have the following installed:
 
 ### Installation
 1) Clone the repository (if you haven't cloned it)
-2) cd backend
-3) create a virtual environment: python -m venv venv
-4) activate a virtual environment:  .\venv\Scripts\activate
-5) install depedencies:  `pip install -r app\requirements.txt`
+2) `cd backend`
+3) create a virtual environment: `python -m venv venv`
+4) activate a virtual environment: `.\venv\Scripts\activate`
+5) install depedencies: `pip install -r app\requirements.txt`
    
 
 ### Running the Application
-- start the development server: python endpoints.py
+- start the development server: `python endpoints.py`
 
   **Backend runs on http://localhost:5000/**
 
