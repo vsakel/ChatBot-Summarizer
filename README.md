@@ -104,8 +104,8 @@ We integrate the LLM using the followed pipeline:
 3) Creating **augmented prompt**.
    - Augmented prompt, combines parsed document text with the user prompt.   
 4) Sending the augmented prompt to GPT-4 model for processing.
-   - We sent the context to API endpoint of model, using the openai.chat.completions.create endpoint.
-5) Extracting the generated summary from the API's response.
+   - We **sent the context to API endpoint** of model, using the openai.chat.completions.create endpoint.
+5) **Extracting** the generated **summary** from the API's response.
 
 
 
