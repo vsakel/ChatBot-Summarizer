@@ -6,7 +6,7 @@ An AI-powered application that simplifies document processing. Upload your files
 This frontend is built with **React.js** and **Vite**.
 
 It consists of key components such as:
-- **main.jsx**: The entry point of our React application. It is responsible for rendering the top-level component, App, into the DOM
+- **main.jsx**: The entry point of our React application. It is responsible for rendering the top-level component, App, into the DOM.
 - **App.jsx**: The core component of the application that acts as a container for the two main pages, managing the routing between them.
 - **HomePage.jsx**: Displays the Home page, which is the root page of the application.
 - **UploadPage.jsx**: Displays the Upload page, where users can upload their files. It handles the file upload process and displays the generated summary.
