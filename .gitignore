@@ -4,3 +4,7 @@ backend/uploads
 backend/app/.env
 backend/.pytest_cache
 .pytest_cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
