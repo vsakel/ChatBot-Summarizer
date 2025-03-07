@@ -74,14 +74,16 @@ You should have the following installed:
 
 ## LLM Integration
 
-This section provide details about the integration and use of an OpenAI' s model, in our backend.
+This section provide details about the integration and usage of an OpenAI' s model, in our backend.
 
-We use OpenAI's GPT-4 model, which is hosted in OpenAI's cloud servers, for analyzing and summarizing the content of tax-related uploaded documents.
+We use OpenAI's GPT-4 model, which is hosted in OpenAI's cloud servers, to analyze and summarize tax-related uploaded documents.
 
-To integrate the model we develop this pipeline:
+### Integration Pipeline
+We integrate the LLM using the followed pipeline:
+
 1. Document parsing.
-   - When a PDF is uploading, it is first **parsed into markdown format**, ready for processing by the AI model.
-2. Declaring of System and User prompts.
+   - When a PDF is uploading, it is first **parsed into markdown format**. This structured format prepares the document for processing by the LLM.
+2. Declaring system and user prompts.
    - We declare a system prompt that provide some instructions to guide the model to the desired output.
   
      Our **system prompt**:
@@ -99,9 +101,11 @@ To integrate the model we develop this pipeline:
      
    `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
    
-3) Declaring of an **augmented prompt**, which consist of a combination of parsed document text with the user prompt.   
-4) Sending the augmented prompt to OpenAI API of GPT-4 model, using openai.chat.completions.create endpoint.
-5) The AI model generates a summary, that is returned in the backend summarize endpoint and then it returns as json in frontend.
+3) Creating **augmented prompt**.
+   - Augmented prompt, combines parsed document text with the user prompt.   
+4) Sending the augmented prompt to GPT-4 model for processing.
+   - We sent the context to API endpoint of model, using the openai.chat.completions.create endpoint.
+5) Extracting the generated summary from the API's response.
 
 
 
