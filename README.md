@@ -99,7 +99,7 @@ We integrate the LLM using the followed pipeline:
   
      Our **user prompt**:
      
-   `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
+    `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
    
 3) Creating **augmented prompt**.
    - Augmented prompt, combines parsed document text with the user prompt.   
