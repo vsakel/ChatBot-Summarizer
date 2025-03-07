@@ -31,7 +31,7 @@ The backend runs on http://localhost:5000/
 ### Endpoints implementation:
 - Test Endpoint (GET /) – Checks if the backend is running
 - Summarization Endpoint (POST /summarize) – Uploads a **PDF document**, processes it, and returns the generated summary.
-- 
+
   **Summarization Endpoint Logic**:
   - User uploads a PDF file.
   - The document is stored temporarily on the backend server, for processing.
