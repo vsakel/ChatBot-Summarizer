@@ -83,12 +83,13 @@ To integrate the model we develop this pipeline:
    - When a PDF is uploading, it is first parsed into markdown format, ready for processing by the AI model.
 3. System and User prompts.
    - A system prompt that guide the model to the desire output.
-     - '''system_prompt = """ You are an assistant that analyze tax related documents and generate a short summary.
+     - ```system_prompt = """ You are an assistant that analyze tax related documents and generate a short summary.
     You should follow these instructions:
     - Keep the summary concise, focusing only on the most important details.
     - Highlight the points you think most important. 
     - If document contains unclear information highlight it, but avoid making assumptions.
-    - Respond in markdown.'''
+    - Respond in markdown.```
+    - 
    - A user prompt that gives the content that user wants to summarize
 4. The parsed document text is combined with the user prompt to create an "augmented prompt" that is sent to the OpenAI API, which is hosted on OpenAI’s cloud servers. The request is made to the GPT-4 model.
 5. summary generation
