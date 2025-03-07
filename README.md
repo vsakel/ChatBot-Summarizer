@@ -81,22 +81,25 @@ We use OpenAI's GPT-4 model, which is hosted in OpenAI's cloud servers, for anal
 To integrate the model we develop this pipeline:
 1. Document parsing.
    - When a PDF is uploading, it is first **parsed into markdown format**, ready for processing by the AI model.
-2. System and User prompts.
-   - A **system prompt** that provide some instructions to guide the model to the desired output:
-     
+2. Declaring of System and User prompts.
+   - We declare a system prompt that provide some instructions to guide the model to the desired output.
+  
+     Our **system prompt**:
+   
       ```You are an assistant that analyze tax related documents and generate a short summary.
       You should follow these instructions:
       Keep the summary concise, focusing only on the most important details.
       Highlight the points you think most important. 
       If document contains unclear information highlight it, but avoid making assumptions.
       Respond in markdown.
-   
-   - A **user prompt** that tells the model to summarize a specific document:
+   - Also we declare a user prompt that tells the model to summarize a specific document
+  
+     Our **user prompt**:
      
    `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
    
-3) The parsed document text is combined with the user prompt to create an **augmented prompt**.   
-4) The augmented prompt is sent to OpenAI API of GPT-4 model.
+3) Declaring of an **augmented prompt**, which consist of a combination of parsed document text with the user prompt.   
+4) Sending the augmented prompt to OpenAI API of GPT-4 model, using openai.chat.completions.create endpoint.
 5) The AI model generates a summary, that is returned in the backend summarize endpoint and then it returns as json in frontend.
 
 
