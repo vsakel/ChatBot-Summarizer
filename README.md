@@ -76,7 +76,7 @@ You should have the following installed:
 
 This section provide details about the integration and usage of an OpenAI' s model, in our backend.
 
-We use OpenAI's GPT-4 model (gpt-4o-mini), which is hosted in OpenAI's cloud servers, to analyze and summarize tax-related uploaded documents.
+We use OpenAI's GPT-4 model (especially we use gpt-4o-mini), which is hosted in OpenAI's cloud servers, to analyze and summarize tax-related uploaded documents.
 
 ### Integration Pipeline
 We integrate the LLM using the followed pipeline:
