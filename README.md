@@ -45,7 +45,7 @@ This section provides details about the API endpoints used in the ChatBot Summar
   - Accepts POST requests at http://localhost:5000/summarize
   - The endpoint allow clients to send a POST request (upload a PDF), and the endpoint will process it and return the generated summary.
 
-  **Summarization Endpoint Logic**:
+  ### Summarization Endpoint Logic
   - User uploads a PDF file.
   - The document is stored temporarily on the backend server, for processing.
   - The document is processed and parsed, using pymupdf4llm library.
