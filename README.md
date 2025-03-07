@@ -46,7 +46,7 @@ This section provides details about the API endpoints used in the ChatBot Summar
   - The document is stored temporarily on the backend server, for processing.
   - The document is processed and parsed, using pymupdf4llm library.
   - The parsed document sent to OpenAI's LLM for summarization.
-  - The generated summary is returned as a JSON response.
+  - The generated summary is returned, to frontend, as a JSON response.
   - The temporary file is deleted after processing is complete.
  
 ### Additional Details
