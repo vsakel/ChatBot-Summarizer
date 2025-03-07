@@ -45,13 +45,13 @@ This section provides details about the API endpoints used in the ChatBot Summar
   - Accepts POST requests at http://localhost:5000/summarize
   - The endpoint allow clients to send a POST request (upload a PDF), and the endpoint will process it and return the generated summary.
 
-  ### Summarization Endpoint Logic
-  - User uploads a PDF file.
-  - The document is stored temporarily on the backend server, for processing.
-  - The document is processed and parsed, using pymupdf4llm library.
-  - The parsed document sent to OpenAI's LLM for summarization.
-  - The generated summary is returned, to frontend, as a JSON response.
-  - The temporary file is deleted after processing is complete.
+### Summarization Endpoint Functionality
+1. User uploads a PDF file.
+2. The document is stored temporarily on the backend server, for processing.
+3. The document is processed and parsed, using pymupdf4llm library.
+4. The parsed document sent to OpenAI's LLM for summarization.
+5. The generated summary is returned, to frontend, as a JSON response.
+6. The temporary file is deleted after processing is complete.
  
 ### Additional Details
 - Cross Origin Resource Sharing (CORS), is enabled to allow frontend receive responses from backend enpdpoint.
