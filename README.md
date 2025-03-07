@@ -24,12 +24,12 @@ You should have the following installed:
 ### Installation
 1) Clone the repository
 2) cd frontend
-3) npm install - Install depedencies
+3) Install depedencies: npm install
 
 ### Running the Application
-- npm run dev - start the development server 
+- start the development server: npm run dev  
 
-  Open http://localhost:5173/ in your browser to access the application.
+  Application runs on http://localhost:5173/
 
 ## API Documentation
 
@@ -45,9 +45,9 @@ You should have the following installed:
 ### Installation
 1) Clone the repository (if you haven't cloned it)
 2) cd backend
-3) create a virtual environment - python -m venv venv
-4) activate a virtual environment - .\venv\Scripts\activate
-5) install depedencies - pip install -r app\requirements.txt
+3) create a virtual environment: python -m venv venv
+4) activate a virtual environment:  .\venv\Scripts\activate
+5) install depedencies:  pip install -r app\requirements.txt
    
 
 ### Running the Application
@@ -70,7 +70,7 @@ You should have the following installed:
 ### Additional Details
 - Cross Origin Resource Sharing (CORS), is enabled to allow frontend receive responses from backend enpdpoint.
 - Uploaded files are temporarily stored in the backend, because the pymupdf4llm library requires a file path to process the PDF.
-- We parse the PDF into Markdown format because it preserves the hierarchical document's structure, which enhances the model's ability to understand the content.
+- We parse the PDF into Markdown format, because it preserves the hierarchical document's structure, which enhances the model's ability to understand the content.
 
 
 
