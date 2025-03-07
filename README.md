@@ -170,7 +170,7 @@ Once the containers are up and running, we can access the services at the follow
 - Frontend: http://localhost:5173
 - Backend: http://localhost:5000
 
-### Stop the containers:
+### Stop the containers
 To stop the containers, we run: `docker-compose down`
 
   
