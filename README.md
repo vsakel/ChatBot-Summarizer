@@ -86,7 +86,8 @@ To integrate the model we develop this pipeline:
   
      Our **system prompt**:
    
-      ```You are an assistant that analyze tax related documents and generate a short summary.
+      ```
+      You are an assistant that analyze tax related documents and generate a short summary.
       You should follow these instructions:
       Keep the summary concise, focusing only on the most important details.
       Highlight the points you think most important. 
