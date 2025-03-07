@@ -30,12 +30,14 @@ The backend runs on http://localhost:5000/
 
 ### Endpoints implementation:
 - Test Endpoint (GET /) – Checks if the backend is running
-- Summarization Endpoint (POST /summarize) – Uploads a PDF document, processes it, and returns the generated summary of this document.
-  -This endpoint allows users to upload a PDF file.
-  -The document is stored temporarily on the backend server, for processing.
-  -The document is processed and parsed, using **pymupdf4llm** library.
-  -After parsed, the document sent to OpenAI's LLM for summarization.
-  -The generated summary is returned as a JSON response.
+- Summarization Endpoint (POST /summarize) – Uploads a **PDF document**, processes it, and returns the generated summary.
+  **Pipeline** of this endpoint:
+  - User uploads a PDF file.
+  - The document is stored temporarily on the backend server, for processing.
+  - The document is processed and parsed, using pymupdf4llm library.
+  - The parsed document sent to OpenAI's LLM for summarization.
+  - The generated summary is returned as a JSON response.
+  - The temporary file is deleted after processing is complete.
 
 
 
