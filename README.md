@@ -7,20 +7,37 @@ This frontend is built with **React.js** and **Vite**.
 
 Follow these steps to set up and run the project locally.
 
-## Prerequisites
+### Prerequisites
 You should have the following installed:
 - Node.js
 - Git (to clone repository)
 
-## Installation
+### Installation
 1) Clone the repository
 2) cd frontend
 3) npm install - Install depedencies
 
-## Running the Application
+### Running the Application
 - npm run dev - start the development server 
 
   Open http://localhost:5173/ in your browser to access the application.
+
+## API Documentation
+
+This section provides details about the API endpoints used in the ChatBot Summarizer backend, built with **Flask**.
+
+The backend runs on http://localhost:5000/
+
+### Endpoints implementation:
+- Test Endpoint (GET /) – Checks if the backend is running
+- Summarization Endpoint (POST /summarize) – Uploads a PDF document, processes it, and returns the generated summary of this document.
+  -This endpoint allows users to upload a PDF file.
+  -The document is stored temporarily on the backend server, for processing.
+  -The document is processed and parsed, using **pymupdf4llm** library.
+  -After parsed, the document sent to OpenAI's LLM for summarization.
+  -The generated summary is returned as a JSON response.
+
+
 
 
 
