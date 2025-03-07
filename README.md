@@ -130,8 +130,9 @@ To build and run the multi-container architecture, we will run the following com
 `docker-compose up -d`
 
 **Note**: 
-1.Docker Desktop should run in background.
-2.We run the containers in detached mode (-d flag), so our containers run in the background.
+
+1. Docker Desktop should run in background.
+2. We run the containers in detached mode (-d flag), so our containers run in the background.
  
 
 ### Access the services Locally
