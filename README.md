@@ -69,7 +69,8 @@ You should have the following installed:
    
 
 ### Running the Application
-- Start the development server: `python endpoints.py`
+ - Move to app folder: `cd app`
+ - run flask app script, to start the development server: `python endpoints.py`
  - **Backend runs on http://localhost:5000/**
 
 ## LLM Integration
@@ -128,7 +129,9 @@ To build and run the multi-container architecture, we will run the following com
 
 `docker-compose up -d`
 
-**Note**: We run the containers in detached mode (-d flag), so our containers run in the background.
+**Notes**: 
+- Docker Desktop should run in background.
+- We run the containers in detached mode (-d flag), so our containers run in the background.
  
 
 ### Access the services Locally
