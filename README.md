@@ -5,6 +5,15 @@ An AI-powered application that simplifies document processing. Upload your files
 ## Frontend Setup
 This frontend is built with **React.js** and **Vite**.
 
+It consists of key components such as:
+- **main.jsx**: The entry point of our React application. It is responsible for rendering the top-level component, App, into the DOM
+- **App.jsx**: The core component of the application that acts as a container for the two main pages, managing the routing between them.
+- **HomePage.jsx**: Displays the Home page, which is the root page of the application.
+- **UploadPage.jsx**: Displays the Upload page, where users can upload their files. It handles the file upload process and displays the generated summary.
+- **NavigationBar.jsx**: The navigation bar, which allows users to move between pages (Home and Upload).
+- **Summary.jsx**: Renders the generated summary in Markdown format.
+
+
 Follow these steps to set up and run the project locally.
 
 ### Prerequisites
@@ -34,15 +43,15 @@ You should have the following installed:
 - Git (to clone repository)
 
 ### Installation
-1) Clone the repository (if you haven't already this)
+1) Clone the repository (if you haven't cloned it)
 2) cd backend
 3) create a virtual environment - python -m venv venv
 4) activate a virtual environment - .\venv\Scripts\activate
-5) install depedencies - pip install -r requirements.txt
+5) install depedencies - pip install -r app\requirements.txt
    
 
 ### Running the Application
-- start the development server - 'python endpoints.py'
+- start the development server - python endpoints.py
 
   Backend runs http://localhost:5000/ 
 
