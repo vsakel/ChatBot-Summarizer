@@ -31,16 +31,18 @@ Follow these steps to set up and run the project locally.
 ### Prerequisites
 You should have the following installed:
 - Python
+- Git (to clone repository)
 
 ### Installation
-1) cd backend
-2) create a virtual environment - python -m venv venv
-3) activate a virtual environment - .\venv\Scripts\activate
-4) install depedencies - pip install -r requirements.txt
+1) Clone the repository (if you haven't already this)
+2) cd backend
+3) create a virtual environment - python -m venv venv
+4) activate a virtual environment - .\venv\Scripts\activate
+5) install depedencies - pip install -r requirements.txt
    
 
 ### Running the Application
-- start the development server - python endpoints.py
+- start the development server - 'python endpoints.py'
 
   Backend runs http://localhost:5000/ 
 
