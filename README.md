@@ -3,7 +3,7 @@
 An AI-powered application that simplifies document processing. Upload your files, and the system will generate clear, concise summaries to help you better understand your documents.
 
 ## Frontend Setup
-This is a frontend is built with **React.js** and **Vite**.
+This frontend is built with **React.js** and **Vite**.
 
 Follow these steps to set up and run the project locally.
 
