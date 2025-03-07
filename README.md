@@ -42,7 +42,7 @@ This section provides details about the API endpoints used in the ChatBot Summar
  - The endpoint checks if the backend is running and respond to a GET request.
    
 - **Summarization Endpoint** (POST /summarize)
- - Accepts POST requests at http://localhost:5000/summarize
+  - Accepts POST requests at http://localhost:5000/summarize
  - The endpoint allow clients to send a POST request (upload a PDF), and the endpoint will process it and return the generated summary.
 
   **Summarization Endpoint Logic**:
