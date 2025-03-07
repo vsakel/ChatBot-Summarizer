@@ -90,7 +90,7 @@ We integrate the LLM using the followed pipeline:
    - To use OpenAI's models, we need to have an API key from OpenAI. The API key allow us to send requests and communicate with OpenAI's models.
    - Create a .env file in the backend/app folder and add the API key: `OPENAI_API_KEY=your-api-key`
      
-2. Declaring system and user prompts.
+3. Declaring system and user prompts.
    - We declare a system prompt that provide some instructions to guide the model to the desired output.
   
      Our **system prompt**:
@@ -106,13 +106,39 @@ We integrate the LLM using the followed pipeline:
   
      Our **user prompt**: `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
    
-3. Creating **augmented prompt**.
+4. Creating **augmented prompt**.
    - Augmented prompt, combines parsed document text with the user prompt.
      
-4. Sending the augmented prompt to GPT-4 model for processing.
+5. Sending the augmented prompt to GPT-4 model for processing.
    - We **sent the context to API endpoint** of model, using the openai.chat.completions.create endpoint.
      
-5. **Extracting** the generated **summary** from the API's response.
+6. **Extracting** the generated **summary** from the API's response.
+
+
+## Docker Setup
+
+This project uses Docker Compose tool to build a **multi-container architecture** with frontend and backend as services within separate containers, that communicate within a Docker network.
+
+Follow these steps to containirize frontend and backend services.
+
+### Prerequisites
+You should have installed:
+- Docker Desktop
+
+### Build and run Docker containers
+To build and run the multi-container architecture, where the frontend and backend containers communicate withn Docker's network.
+We will run the containers in detached mode (-d flag), so our containers run in the background.
+run: `docker-compose up -d`, in the root project directory. 
+
+### Access the services Locally
+Once the containers are up and running, we can acess the services at the following URLs:
+- Frontend: http://localhost:5173
+- Backend: http://localhost:5000
+
+### Stopping the containers:
+To stop the containers, we run: `docker-compose down`
+
+  
 
 
 
