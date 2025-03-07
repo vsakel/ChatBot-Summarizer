@@ -89,14 +89,15 @@ To integrate the model we develop this pipeline:
       Keep the summary concise, focusing only on the most important details.
       Highlight the points you think most important. 
       If document contains unclear information highlight it, but avoid making assumptions.
-      Respond in markdown.```
+      Respond in markdown.
    
    - A **user prompt** that tells the model to summarize a specific document:
+     
    `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
-   3) The parsed document text is combined with the user prompt to create an **augmented prompt**.
    
-4. The augmented prompt is sent to OpenAI API of GPT-4 model.
-5. The AI model generates a summary, that is returned in the backend summarize endpoint and then it returns as json in frontend.
+3) The parsed document text is combined with the user prompt to create an **augmented prompt**.   
+4) The augmented prompt is sent to OpenAI API of GPT-4 model.
+5) The AI model generates a summary, that is returned in the backend summarize endpoint and then it returns as json in frontend.
 
 
 
