@@ -55,6 +55,7 @@ This section provides details about the API endpoints used in the ChatBot Summar
  
 ### Additional Details
 - Cross Origin Resource Sharing (CORS), is enabled to allow frontend receive responses from backend enpdpoint.
+- Pymupdf4llm is a popular library for parsing PDF files and enabling efficient document processing from LLMs.
 - Uploaded files are temporarily stored in the backend, because the pymupdf4llm library requires a file path to process the PDF.
 - We parse the PDF into Markdown format, because it preserves the hierarchical document's structure, which enhances the model's ability to understand the content.
 
@@ -97,7 +98,7 @@ We integrate the LLM using the followed pipeline:
 3. Declaring system and user prompts.
    - We declare a system prompt that provide some instructions to guide the model to the desired output.
   
-     Our **system prompt**:
+   - Our **system prompt**:
    
       ```
       You are an assistant that analyze tax related documents and generate a short summary.
@@ -108,7 +109,7 @@ We integrate the LLM using the followed pipeline:
       Respond in markdown.
    - Also we declare a user prompt that tells the model to summarize a specific document
   
-     Our **user prompt**: `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
+   - Our **user prompt**: `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
    
 4. Creating **augmented prompt**.
    - Augmented prompt, combines parsed document text with the user prompt.
