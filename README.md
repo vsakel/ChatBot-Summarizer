@@ -88,8 +88,7 @@ We integrate the LLM using the followed pipeline:
 
 2. Set up the API key.
    - To use OpenAI's models, we need to have an API key from OpenAI. The API key is used to authenticate our requests to OpenAI's servers.
-      - Create a .env file in the backend/app folder and add the API key:
-        `OPENAI_API_KEY=your-api-key`
+   - Create a .env file in the backend/app folder and add the API key: `OPENAI_API_KEY=your-api-key`
      
 2. Declaring system and user prompts.
    - We declare a system prompt that provide some instructions to guide the model to the desired output.
