@@ -74,10 +74,6 @@ You should have the following installed:
 
   **Backend runs on http://localhost:5000/**
 
-
-
-  
-
 ## LLM Integration
 
 This section provide details about the integration and usage of an OpenAI' s model, in our backend.
