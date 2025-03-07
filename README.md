@@ -56,7 +56,7 @@ Follow these steps to set up and run the project locally.
 
 ### Prerequisites
 You should have the following installed:
-- Python
+- Python 3.10
 - Git (to clone repository)
 
 ### Installation
@@ -64,13 +64,28 @@ You should have the following installed:
 2) cd backend
 3) create a virtual environment: python -m venv venv
 4) activate a virtual environment:  .\venv\Scripts\activate
-5) install depedencies:  pip install -r app\requirements.txt
+5) install depedencies:  `pip install -r app\requirements.txt`
    
 
 ### Running the Application
-- start the development server - python endpoints.py
+- start the development server: python endpoints.py
 
-  **Backend runs http://localhost:5000/**
+  **Backend runs on http://localhost:5000/**
+
+## LLM Integration
+
+We use OpenAI's GPT-4 model, which is hosted in OpenAI's cloud servers, and integrate this into our backend. 
+
+We use this model for analyzing and summarizing the content of tax-related uploaded documents.
+
+To integrate the model we develop this pipeline:
+1. Document parsing.
+   - When a PDF is uploading, it is first parsed into markdown format and the document is prepared for processing by the AI model.
+3. System and User prompts.
+   - A system prompt that guide the model to the desire output.
+   - A user prompt that gives the content that user wants to summarize
+4. The parsed document text is combined with the user prompt to create an "augmented prompt" that is sent to the OpenAI API, which is hosted on OpenAI’s cloud servers. The request is made to the GPT-4 model.
+5. summary generation
 
 
 
