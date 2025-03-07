@@ -15,10 +15,10 @@ You should have the following installed:
 ## Installation
 1) Clone the repository
 2) cd frontend
-3) Install depedencies - npm install
+3) npm install - Install depedencies
 
 ## Running the Application
-- start the development server - npm run dev
+- npm run dev - start the development server 
 
   Open http://localhost:5173/ in your browser to access the application.
 
