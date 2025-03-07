@@ -69,7 +69,9 @@ You should have the following installed:
    
 
 ### Running the Application
-- Start the development server: `python endpoints.py`
+- Start the development server:
+ - Move to app folder is: `cd app'
+ - run flask app script: `python endpoints.py`
  - **Backend runs on http://localhost:5000/**
 
 ## LLM Integration
