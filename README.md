@@ -31,7 +31,8 @@ The backend runs on http://localhost:5000/
 ### Endpoints implementation:
 - Test Endpoint (GET /) – Checks if the backend is running
 - Summarization Endpoint (POST /summarize) – Uploads a **PDF document**, processes it, and returns the generated summary.
-  **Pipeline** of this endpoint:
+- 
+  **Summarization Endpoint Logic**:
   - User uploads a PDF file.
   - The document is stored temporarily on the backend server, for processing.
   - The document is processed and parsed, using pymupdf4llm library.
