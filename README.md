@@ -86,8 +86,8 @@ We integrate the LLM using the followed pipeline:
 1. Document parsing.
    - When a PDF is uploading, it is first **parsed into markdown format**. This structured format prepares the document for processing by the LLM.
 
-2. Set up the API key.
-   - To use OpenAI's models, we need to have an API key from OpenAI. The API key allow us to send requests and communicate with OpenAI'S models.
+2. **Set up the API key**.
+   - To use OpenAI's models, we need to have an API key from OpenAI. The API key allow us to send requests and communicate with OpenAI's models.
    - Create a .env file in the backend/app folder and add the API key: `OPENAI_API_KEY=your-api-key`
      
 2. Declaring system and user prompts.
