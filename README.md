@@ -39,6 +39,13 @@ The backend runs on http://localhost:5000/
   - The parsed document sent to OpenAI's LLM for summarization.
   - The generated summary is returned as a JSON response.
   - The temporary file is deleted after processing is complete.
+ 
+### Additional Details
+- Cross Origin Resource Sharing (CORS)
+  - CORS is enabled to allow frontend receive responses from backend enpdpoint
+- File Storage & Processing
+  - Uploaded files are temporarily stored in the uploads/ directory, because the pymupdf4llm library requires a file path to process the PDF.
+
 
 
 
