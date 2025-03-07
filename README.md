@@ -8,15 +8,18 @@ This frontend is built with **React.js** and **Vite**.
 Follow these steps to set up and run the project locally.
 
 ## Prerequisites
+You should have the following installed:
 - Node.js
-- Git (clone repository)
+- Git (to clone repository)
 
 ## Installation
-- Clone the repository
-- npm install (installing depedencies)
+1) Clone the repository
+2) cd frontend
+3) Install depedencies - npm install
 
 ## Running the Application
-- npm run dev (starting development server)
+- start the development server - npm run dev
+
   Open http://localhost:5173/ in your browser to access the application.
 
 
