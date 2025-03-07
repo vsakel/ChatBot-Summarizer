@@ -62,7 +62,7 @@ You should have the following installed:
 ### Installation
 1) Clone the repository (if you haven't cloned it)
 2) `cd backend`
-3) create a virtual environment: `python -m venv venv`
+3) create a virtual environment: `python -m venv virtual_env`
 4) activate a virtual environment: `.\venv\Scripts\activate`
 5) install depedencies: `pip install -r app\requirements.txt`
    
@@ -80,9 +80,15 @@ We use this model for analyzing and summarizing the content of tax-related uploa
 
 To integrate the model we develop this pipeline:
 1. Document parsing.
-   - When a PDF is uploading, it is first parsed into markdown format and the document is prepared for processing by the AI model.
+   - When a PDF is uploading, it is first parsed into markdown format, ready for processing by the AI model.
 3. System and User prompts.
    - A system prompt that guide the model to the desire output.
+     - '''system_prompt = """ You are an assistant that analyze tax related documents and generate a short summary.
+    You should follow these instructions:
+    - Keep the summary concise, focusing only on the most important details.
+    - Highlight the points you think most important. 
+    - If document contains unclear information highlight it, but avoid making assumptions.
+    - Respond in markdown.'''
    - A user prompt that gives the content that user wants to summarize
 4. The parsed document text is combined with the user prompt to create an "augmented prompt" that is sent to the OpenAI API, which is hosted on OpenAI’s cloud servers. The request is made to the GPT-4 model.
 5. summary generation
