@@ -29,11 +29,28 @@ You should have the following installed:
 ### Running the Application
 - start the development server: npm run dev  
 
-  Application runs on http://localhost:5173/
+  **Application runs on http://localhost:5173/**
 
 ## API Documentation
 
 This section provides details about the API endpoints used in the ChatBot Summarizer backend, built with **Flask**.
+
+### Endpoints implementation:
+- Test Endpoint (GET /) – Checks if the backend is running
+- Summarization Endpoint (POST /summarize) – Uploads a **PDF document**, processes it, and returns the generated summary.
+
+  **Summarization Endpoint Logic**:
+  - User uploads a PDF file.
+  - The document is stored temporarily on the backend server, for processing.
+  - The document is processed and parsed, using pymupdf4llm library.
+  - The parsed document sent to OpenAI's LLM for summarization.
+  - The generated summary is returned as a JSON response.
+  - The temporary file is deleted after processing is complete.
+ 
+### Additional Details
+- Cross Origin Resource Sharing (CORS), is enabled to allow frontend receive responses from backend enpdpoint.
+- Uploaded files are temporarily stored in the backend, because the pymupdf4llm library requires a file path to process the PDF.
+- We parse the PDF into Markdown format, because it preserves the hierarchical document's structure, which enhances the model's ability to understand the content.
 
 Follow these steps to set up and run the project locally.
 
@@ -53,24 +70,7 @@ You should have the following installed:
 ### Running the Application
 - start the development server - python endpoints.py
 
-  Backend runs http://localhost:5000/ 
-
-### Endpoints implementation:
-- Test Endpoint (GET /) – Checks if the backend is running
-- Summarization Endpoint (POST /summarize) – Uploads a **PDF document**, processes it, and returns the generated summary.
-
-  **Summarization Endpoint Logic**:
-  - User uploads a PDF file.
-  - The document is stored temporarily on the backend server, for processing.
-  - The document is processed and parsed, using pymupdf4llm library.
-  - The parsed document sent to OpenAI's LLM for summarization.
-  - The generated summary is returned as a JSON response.
-  - The temporary file is deleted after processing is complete.
- 
-### Additional Details
-- Cross Origin Resource Sharing (CORS), is enabled to allow frontend receive responses from backend enpdpoint.
-- Uploaded files are temporarily stored in the backend, because the pymupdf4llm library requires a file path to process the PDF.
-- We parse the PDF into Markdown format, because it preserves the hierarchical document's structure, which enhances the model's ability to understand the content.
+  **Backend runs http://localhost:5000/**
 
 
 
