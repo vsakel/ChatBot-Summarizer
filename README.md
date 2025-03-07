@@ -85,6 +85,11 @@ We integrate the LLM using the followed pipeline:
 
 1. Document parsing.
    - When a PDF is uploading, it is first **parsed into markdown format**. This structured format prepares the document for processing by the LLM.
+
+2. Set up the API key.
+   - To use OpenAI's models, we need to have an API key from OpenAI. The API key is used to authenticate our requests to OpenAI's servers.
+      - Create a .env file in the backend/app folder and add the API key:
+        `OPENAI_API_KEY=your-api-key`
      
 2. Declaring system and user prompts.
    - We declare a system prompt that provide some instructions to guide the model to the desired output.
@@ -102,13 +107,13 @@ We integrate the LLM using the followed pipeline:
   
      Our **user prompt**: `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
    
-3) Creating **augmented prompt**.
+3. Creating **augmented prompt**.
    - Augmented prompt, combines parsed document text with the user prompt.
      
-4) Sending the augmented prompt to GPT-4 model for processing.
+4. Sending the augmented prompt to GPT-4 model for processing.
    - We **sent the context to API endpoint** of model, using the openai.chat.completions.create endpoint.
      
-5) **Extracting** the generated **summary** from the API's response.
+5. **Extracting** the generated **summary** from the API's response.
 
 
 
