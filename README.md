@@ -126,6 +126,37 @@ This project uses **Docker Compose** tool to build a **multi-container applicati
 
 Follow these steps to containirize frontend and backend services.
 
+### Port Mapping
+In the docker-compose.yml, the ports for both frontend and backend services are mapped from the containers to the host machine to allow access via the browser.
+To make frontend container accessible, we modify vite.config.js as above:
+```import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    watch: {
+      usePolling: true,
+    },
+    host: true, // without this we cant reach the container from the outside world
+    strictPort: true,
+    port: 5173, 
+  }
+});```
+
+To make bakcend container accessible, we need to include --host=0.0.0.0 when running Flask. So it listen on any other network the container is connected to. 
+This is necessary for Docker to map the port correctly from the container to your host machine.
+
+Frontend 
+Container Port: 5173
+Mapped to Host Port: 5173
+Accessible at http://localhost:5173
+Backend 
+Container Port: 5000
+Mapped to Host Port: 5000
+Accessible http://localhost:5000
+
 ### Prerequisites
 You should have installed:
 - Docker Desktop
