@@ -25,7 +25,7 @@ You should have the following installed:
 
 ### Installation
 1) Clone the repository
-2) `cd frontend`
+2) Moce to fronted folder: `cd frontend`
 3) Install depedencies: `npm install`
 
 ### Running the Application
@@ -63,10 +63,10 @@ You should have the following installed:
 
 ### Installation
 1) Clone the repository (if you haven't cloned it)
-2) `cd backend`
-3) create a virtual environment: `python -m venv virtual_env`
-4) activate a virtual environment: `.\venv\Scripts\activate`
-5) install depedencies: `pip install -r app\requirements.txt`
+2) Move to backend folder: `cd backend`
+3) Create a virtual environment: `python -m venv virtual_env`
+4) Activate a virtual environment: `.\venv\Scripts\activate`
+5) Install depedencies: `pip install -r app\requirements.txt`
    
 
 ### Running the Application
@@ -117,7 +117,7 @@ We integrate the LLM using the followed pipeline:
 
 ## Docker Setup
 
-This project uses Docker Compose tool to build a **multi-container architecture** with frontend and backend as services within separate containers, that communicate within a Docker network.
+This project uses **Docker Compose** tool to build a **multi-container application** with frontend and backend services as separate containers, that communicate within a Docker network.
 
 Follow these steps to containirize frontend and backend services.
 
@@ -126,9 +126,12 @@ You should have installed:
 - Docker Desktop
 
 ### Build and run Docker containers
-To build and run the multi-container architecture, where the frontend and backend containers communicate withn Docker's network.
-We will run the containers in detached mode (-d flag), so our containers run in the background.
-run: `docker-compose up -d`, in the root project directory. 
+To build and run the multi-container architecture, we will run the following command, in the root project directory.
+
+`docker-compose up -d
+
+**Note**: We run the containers in detached mode (-d flag), so our containers run in the background.
+ 
 
 ### Access the services Locally
 Once the containers are up and running, we can acess the services at the following URLs:
