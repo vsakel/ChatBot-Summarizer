@@ -217,13 +217,13 @@ It allows us to send requests to the backend without actually running a server.
 
 ### Test Cases
 
-The following Test Cases were implemented to ensure that the backend handles file uploads and returning proper responses.
+The following test cases were implemented to ensure that the backend handles file uploads and returning proper responses.
 These tests use the **pytest** library and its **fixtures** to simulate HTTP requests to the Flask backend.
 
 
 1. **test_api_start**
 - This test ensures that the API is running by sending a GET request to the root endpoint (/).
-- The expected response should have a status code of 200 and `{"message": "Backend is running"}`.
+- The expected response should have a status code of 200 and return the message `{"message": "Backend is running"}`.
 2. **test_no_file**
 - This test checks the condition where no file reaching the server.
 - It sending an empty POST request to the /summarize endpoint of backend.
