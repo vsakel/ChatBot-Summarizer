@@ -192,7 +192,7 @@ This project uses a CI pipeline, set up with **GitHub Actions** to automate the 
 
 Explaination of file `.github/workflows/ci.yml`.
 
-- Triggered on every push to the main branch.
+- Triggers on every push to the main branch.
 - Defines a job called test-backend, which is responsible for testing the backend service.
   - This job is run on an ubuntu-latest virtual environment.
 - Utilize the latest version of the code from the repository using `actions/checkout@v3`.
