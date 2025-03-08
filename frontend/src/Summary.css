@@ -4,7 +4,7 @@
     padding: 20px;             
     width: 70%;
     margin: 20px auto;         /* Center the box horizontally */
-    line-height: 1.6;          /* Improve line spacing for better readability */
+    line-height: 1.6;          
     overflow-y: auto;          /* Allow scrolling if content overflows */
     word-wrap: break-word;   /* Wrap long words to avoid overflow */
 }

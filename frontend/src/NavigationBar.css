@@ -1,7 +1,7 @@
 .navbar {
   margin: 0; /* Remove default margin */
   padding: 0; /* Remove default padding */
-  background-color:black; /* Set a background color */
+  background-color:black; 
 }
 
 .navbar li {
