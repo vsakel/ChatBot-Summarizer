@@ -7,7 +7,7 @@ You can upload your PDF files, and the system will generate clear, concise summa
 ## Frontend Setup
 This frontend is built with **React.js** and **Vite**.
 
-It consists of key components such as:
+The key components are:
 - **main.jsx**: The entry point of our React application. It is responsible for rendering the top-level component, App, into the DOM.
 - **App.jsx**: The core component of the application that acts as a container for the two main pages, managing the routing between them.
 - **HomePage.jsx**: Displays the Home page, which is the root page of the application.
