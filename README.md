@@ -164,7 +164,7 @@ So it listen on any other network the container is connected to.
 
 ### Prerequisites
 You should have installed:
-- Docker Desktop
+- Docker Desktop.
 
 ### Build and run Docker containers
 To build and run the multi-container architecture, we will run the following command, in the root project directory.
@@ -182,8 +182,24 @@ Once the containers are up and running, we can access the services at the follow
 - Backend: http://localhost:5000
 
 ### Stop the containers
-To stop the containers, we run: `docker-compose down`
+To stop the containers, we run: `docker-compose down`.
 
+## Continuous Integration (CI) Setup
+
+This project uses a CI pipeline, set up with **GitHub Actions** to automate the testing of the backend service every time code is pushed to the repository.
+
+### CI Pipeline Explained
+
+Explaination of file `.github/workflows/ci.yml`.
+
+- Triggered on every push to the main branch.
+- Defines a job called test-backend, which is responsible for testing the backend service.
+  - This job is run on an ubuntu-latest virtual environment.
+- Checks out the latest version of the code from the repository using `actions/checkout@v3`.
+- Installs Python 3.10 environment using `actions/setup-python@v4`.
+- Installs the required dependencies listed in `backend/app/requirements.txt`.
+- Runs the tests located in the `backend/app`directory
+  - Uses Pytest library to run the defined test cases, ensuring that the backend works as expected.
   
 
 
