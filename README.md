@@ -164,7 +164,7 @@ So it listen on any other network the container is connected to.
 
 ### Prerequisites
 You should have installed:
-- Docker Desktop
+- Docker Desktop.
 
 ### Build and run Docker containers
 To build and run the multi-container architecture, we will run the following command, in the root project directory.
@@ -182,9 +182,65 @@ Once the containers are up and running, we can access the services at the follow
 - Backend: http://localhost:5000
 
 ### Stop the containers
-To stop the containers, we run: `docker-compose down`
+To stop the containers, we run: `docker-compose down`.
 
-  
+## Continuous Integration (CI) Setup
+
+This project uses a CI pipeline, set up with **GitHub Actions** to automate the **testing of the backend** service every time **code is pushed** to the repository.
+
+### CI Pipeline Explained
+
+Explaination of file `.github/workflows/ci.yml`.
+
+- Triggered on every push to the main branch.
+- Defines a job called test-backend, which is responsible for testing the backend service.
+  - This job is run on an ubuntu-latest virtual environment.
+- Uses the latest version of the code from the repository using `actions/checkout@v3`.
+- Installs Python 3.10 environment using `actions/setup-python@v4`.
+- Installs the required dependencies listed in `backend/app/requirements.txt`.
+- Runs the tests located in the `backend/app` directory.
+  - Uses **pytest** library to run the defined test cases, ensuring that the backend works as expected.
+
+
+
+### Pytest Fixtures
+
+Pytest fixtures are functions that provide a fixed baseline for tests. They allow for reusability, by sharing common set up across multiple tests.
+Test functions can use them to perform actions.
+
+We implemented a **client fixture** that simulate HTTP requests to the Flask backend. 
+It allows us to send requests to the backend without actually running a server.
+
+
+### Test Cases
+
+The following Test Cases were developed, to ensure that the backend handles file uploads and returning proper responses.
+These tests use the **pytest** library and its **fixtures** to simulate HTTP requests to the Flask backend.
+
+
+1. **test_api_start**
+- This test ensures that the API is running by sending a GET request to the root endpoint (/).
+- The expected response should have a status code of 200 and `{"message": "Backend is running"}`.
+2. **test_no_file**
+- This test checks the condition where no file reaching the server.
+- It sending an empty POST request to the /summarize endpoint of backend.
+- The expected response should have a 400 status code and return the message `{"error": "No file attached."}`.
+3. **test_invalid_extension**
+- This test ensures that an invalid file (.txt file) is not processed by the server.
+- It sends a POST request to /summarize with a .txt file attached.
+- The expected response should have a 400 status code and return the message  `{"error":"Invalid file type. Please upload a PDF file."}`
+
+4 and 5. **test_extension** and **test_valid_extension**
+- These tests check that a valid PDF file is uploaded and processed correctly.
+- Both tests send the PDF file to the /summarize endpoint and expect the server to return summary as response.
+
+
+### Difference between 4 and 5 test cases
+
+- **test_extension**: This test generates a PDF from scratch using the ReportLab library and stores it in memory (as byte stream with BytesIO). The in-memory PDF is then sent to the server for processing.
+
+- **test_valid_extension**: This test uses a real PDF file that is stored on disk. It uploads this actual PDF file to the server and checks if the server processes it correctly.
+
 
 
 
