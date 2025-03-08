@@ -195,7 +195,7 @@ Explaination of file `.github/workflows/ci.yml`.
 - Triggered on every push to the main branch.
 - Defines a job called test-backend, which is responsible for testing the backend service.
   - This job is run on an ubuntu-latest virtual environment.
-- Checks out the latest version of the code from the repository using `actions/checkout@v3`.
+- Uses the latest version of the code from the repository using `actions/checkout@v3`.
 - Installs Python 3.10 environment using `actions/setup-python@v4`.
 - Installs the required dependencies listed in `backend/app/requirements.txt`.
 - Runs the tests located in the `backend/app`directory.
