@@ -46,13 +46,13 @@ This section provides details about the API endpoints used in the ChatBot Summar
   - The endpoint allow clients to send a POST request (upload a PDF), and the endpoint will process it and return the generated summary.
 
 ### Summarization Endpoint Functionality
-1. User uploads a PDF file.
-2. The document is stored temporarily on the backend server, for processing.
-3. The document is processed and parsed, using pymupdf4llm library.
+1. The user uploads a PDF file.
+2. The document is temporarily stored on the backend server, for processing.
+3. It is processed and parsed, using pymupdf4llm library.
 4. The parsed document sent to OpenAI's LLM for summarization.
 5. The generated summary is returned, to frontend, as a JSON response.
 6. The temporary file is deleted after processing is complete.
-7. Efficient error handling, in case of:
+7. Endpoint efficiently handles errors, including:
    - Missing file (No file attached).
    - Invalid file type (only PDF files allowed).
    - Unexpected server error.
