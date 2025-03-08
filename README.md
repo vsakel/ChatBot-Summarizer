@@ -221,19 +221,19 @@ The following test cases were implemented to ensure that the backend handles fil
 These tests use the **pytest** library and its **fixtures** to simulate HTTP requests to the Flask backend.
 
 
-1. **test_api_start**
+1. **test_api_start(client)**
 - This test ensures that the API is running by sending a GET request to the root endpoint (/).
 - The expected response should have a status code of 200 and return the message `{"message": "Backend is running"}`.
-2. **test_no_file**
+2. **test_no_file(client)**
 - This test checks the condition where no file reaching the server.
 - It sending an empty POST request to the /summarize endpoint of backend.
 - The expected response should have a 400 status code and return the message `{"error": "No file attached."}`.
-3. **test_invalid_extension**
+3. **test_invalid_extension(client)**
 - This test ensures that an invalid file (.txt file) is not processed by the server.
 - It sends a POST request to /summarize with a .txt file attached.
 - The expected response should have a 400 status code and return the message  `{"error":"Invalid file type. Please upload a PDF file."}`
 
-4 and 5. **test_extension** and **test_valid_extension**
+4 and 5. **test_extension(client)** and **test_valid_extension(client)**
 - These tests check that a valid PDF file is uploaded and processed correctly.
 - Both tests send the PDF file to the /summarize endpoint and expect the server to return summary as response.
 
