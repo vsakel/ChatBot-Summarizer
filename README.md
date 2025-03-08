@@ -116,7 +116,7 @@ We integrate the LLM using the followed pipeline:
       Highlight the points you think most important. 
       If document contains unclear information highlight it, but avoid making assumptions.
       Respond in markdown.
-   - Also we declare a user prompt that tells the model to summarize a specific document
+   - Also we declare a user prompt that tells the model to summarize a specific document.
   
    - Our **user prompt**: `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
    
