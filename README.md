@@ -217,7 +217,7 @@ It allows us to send requests to the backend without actually running a server.
 
 ### Test Cases
 
-The following Test Cases were developed to ensure that the backend handles file uploads and returning proper responses.
+The following Test Cases were implemented to ensure that the backend handles file uploads and returning proper responses.
 These tests use the **pytest** library and its **fixtures** to simulate HTTP requests to the Flask backend.
 
 
