@@ -186,7 +186,7 @@ To stop the containers, we run: `docker-compose down`.
 
 ## Continuous Integration (CI) Setup
 
-This project uses a CI pipeline, set up with **GitHub Actions** to automate the testing of the backend service every time code is pushed to the repository.
+This project uses a CI pipeline, set up with **GitHub Actions** to automate the **testing of the backend** service every time **code is pushed** to the repository.
 
 ### CI Pipeline Explained
 
@@ -198,8 +198,8 @@ Explaination of file `.github/workflows/ci.yml`.
 - Checks out the latest version of the code from the repository using `actions/checkout@v3`.
 - Installs Python 3.10 environment using `actions/setup-python@v4`.
 - Installs the required dependencies listed in `backend/app/requirements.txt`.
-- Runs the tests located in the `backend/app`directory
-  - Uses Pytest library to run the defined test cases, ensuring that the backend works as expected.
+- Runs the tests located in the `backend/app`directory.
+  - Uses **Pytest** library to run the defined test cases, ensuring that the backend works as expected.
   
 
 
