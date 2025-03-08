@@ -52,6 +52,10 @@ This section provides details about the API endpoints used in the ChatBot Summar
 4. The parsed document sent to OpenAI's LLM for summarization.
 5. The generated summary is returned, to frontend, as a JSON response.
 6. The temporary file is deleted after processing is complete.
+7. Efficient error handling, in case of:
+   - Missing file (No file attached).
+   - Invalid file type (only PDF files allowed).
+   - Unexpected server error.
  
 ### Additional Details
 - Cross Origin Resource Sharing (CORS), is enabled to allow frontend receive responses from backend enpdpoint.
@@ -87,7 +91,7 @@ We use OpenAI's GPT-4 model (specifically GPT-4o mini), which is hosted on OpenA
 
 ### LLM Model
 
-We use GPT-4o mini, which is designed to balance performance with cost efficiency. It provides powerful AI solutions at a lower price point than the GPT-4o model.
+We use **GPT-4o mini**, which is designed to balance performance with cost efficiency. It provides powerful AI solutions at a lower price point than the GPT-4o model.
 
 
 ### Integration Pipeline
