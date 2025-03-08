@@ -22,8 +22,10 @@ jobs:
         run: |
           pip install -r backend/app/requirements.txt
           
+      - name: Create .env file with API key
+        run: |
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > backend/app/.env
+
       - name: Run tests with pytest
         run: |
           pytest backend/app  
-        env:
-          API_KEY: ${{ secrets.OPENAI_API_KEY }}
