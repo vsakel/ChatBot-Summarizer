@@ -38,10 +38,7 @@ def test_invalid_extension(client):
         assert response.json == {"error": "Invalid file type. Please upload a PDF file."},400
 
 
-## This test is successfully passed when i run it locally
-## but when i run it with github actions, i get an error from server
-## so it returns response.status_code == 500
-
+# This test uses a real PDF file that is stored on disk. It uploads this actual PDF file to the server and checks if the server processes it correctly.
 # def test_valid_extension(client):
 #     """Test a valid PDF file upload"""
 #     with open('backend/app/invoice.pdf', 'rb') as pdf:  # provide a valid PDF file path
@@ -61,6 +58,8 @@ def generate_test_pdf():
     pdf_buffer.seek(0)
     return pdf_buffer
 
+# This test generates a PDF from scratch using the ReportLab library and stores 
+# it in memory (as byte stream with BytesIO). The in-memory PDF is then sent to the server for processing.
 def test_extension(client):
     """Test a valid PDF file upload"""
     pdf_buffer = generate_test_pdf()
