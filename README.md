@@ -208,8 +208,8 @@ Explaination of file `.github/workflows/ci.yml`.
 Pytest fixtures are functions that provide a fixed baseline for tests. They allow for reusability, by sharing common set up across multiple tests.
 Test functions can use them to perform actions.
 
-We implemented the **client fixture** that simulate HTTP requests to the Flask backend. 
-It allows us to send GET and POST requests to the backend without actually running a server.
+We implemented a **client fixture** that simulate HTTP requests to the Flask backend. 
+It allows us to send requests to the backend without actually running a server.
 
 
 ### Test Cases
