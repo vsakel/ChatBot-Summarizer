@@ -58,7 +58,7 @@ This section provides details about the API endpoints used in the ChatBot Summar
    - Unexpected server error.
  
 ### Additional Details
-- Cross Origin Resource Sharing (CORS), is enabled to allow frontend receive responses from backend enpdpoint.
+- Cross Origin Resource Sharing (CORS) is enabled to allow frontend to receive responses from backend enpdpoint.
 - Pymupdf4llm is a popular library for parsing PDF files and enabling efficient document processing with LLMs.
 - Uploaded files are temporarily stored in the backend, because the pymupdf4llm library requires a file path to process the PDF.
 - We parse the PDF into Markdown format, because it preserves the hierarchical document's structure, which enhances the model's ability to understand the content.
