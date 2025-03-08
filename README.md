@@ -244,6 +244,12 @@ These tests use the **pytest** library and its **fixtures** to simulate HTTP req
 
 - **test_valid_extension**: This test uses a real PDF file that is stored on disk. It uploads this actual PDF file to the server and checks if the server processes it correctly.
 
+### Running the Tests Locally
+
+To run the test cases, we will run `pytest` command, in the root project directory.
+
+
+
 
 
 
