@@ -25,7 +25,7 @@ You should have the following installed:
 
 ### Installation
 1) Clone the repository: `git clone https://github.com/vsakel/ChatBot-Summarizer.git`
-2) Move to fronted folder: `cd frontend`
+2) Move to frontend folder: `cd frontend`
 3) Install depedencies: `npm install`
 
 ### Running the Application
