@@ -230,7 +230,7 @@ These tests use the **pytest** library and its **fixtures** to simulate HTTP req
 - The expected response should have a 400 status code and return the message `{"error": "No file attached."}`.
 3. **test_invalid_extension(client)**
 - This test ensures that an invalid file (.txt file) is not processed by the server.
-- It sends a POST request to /summarize with a .txt file attached.
+- It sends a POST request to /summarize endpoint with a .txt file attached.
 - The expected response should have a 400 status code and return the message  `{"error":"Invalid file type. Please upload a PDF file."}`
 
 4 and 5. **test_extension(client)** and **test_valid_extension(client)**
