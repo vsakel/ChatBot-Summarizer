@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
 from llm_api import generate_summary
+from parse import parse_file
 
 # This Flask module provides an API for summarizing PDF files using an external 
 # function (generate_summary) that integrates an LLM. 
@@ -38,15 +39,20 @@ def summarize():
      # try-except block captures errors that happen during the execution of route
     try:
         file_path = None
+
         # The file may not properly attach due to a network issue, file corruption, or browser bugs.
         if 'userfile' not in request.files:
             return jsonify({"error": "No file attached."}), 400
+        
         file = request.files['userfile']
         file_name = file.filename
         files_allowed = ['pdf']
         file_extension = file_name.split('.')[-1].lower()
+
+        # check for the file extension
         if file_extension not in files_allowed:
             return jsonify({"error": "Invalid file type. Please upload a PDF file."}), 400
+            
         file_path = os.path.join(app.config['UPLOADER_FOLDER'] ,file_name)
         file.save(file_path)
         summary = generate_summary(file_path) # call the llm integration function to generate a summary
@@ -54,6 +60,7 @@ def summarize():
     except Exception as e:
         return jsonify({"error": f"An unexpected error occurred: {str(e)}"}), 500 
         # we have to return the status code, because jsonify return 200 even if an error happens
+
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)

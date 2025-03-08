@@ -35,11 +35,11 @@ def test_invalid_extension(client):
 ## but when i run it with github actions, i get an error from server
 ## so it returns response.status_code == 500
 
-# def test_valid_extension(client):
-#     """Test a valid PDF file upload"""
-#     with open('backend/app/invoice.pdf', 'rb') as pdf:  # provide a valid PDF file path
-#         data = {'userfile': (pdf, 'invoice.pdf')}
-#         response = client.post('/summarize', data=data, content_type='multipart/form-data')
-#         assert response.status_code == 200
-#         json_data = response.get_json()
-#         assert 'summary' in json_data  # check that a summary is returned
+def test_valid_extension(client):
+    """Test a valid PDF file upload"""
+    with open('backend/app/invoice.pdf', 'rb') as pdf:  # provide a valid PDF file path
+        data = {'userfile': (pdf, 'invoice.pdf')}
+        response = client.post('/summarize', data=data, content_type='multipart/form-data')
+        assert response.status_code == 200
+        json_data = response.get_json()
+        assert 'summary' in json_data  # check that a summary is returned
