@@ -200,7 +200,86 @@ Explaination of file `.github/workflows/ci.yml`.
 - Installs the required dependencies listed in `backend/app/requirements.txt`.
 - Runs the tests located in the `backend/app`directory.
   - Uses **Pytest** library to run the defined test cases, ensuring that the backend works as expected.
-  
+
+
+
+### Test Cases
+
+The following Test Cases were developed, to ensure that the backend handles file uploads and returning proper responses.
+
+1. **test_api_start**
+   - This test ensures that the API is running by sending a GET request to the root endpoint (/).
+   - The expected response should have a status code of 200 and return the message `{"message": "Backend is running"}`.
+
+
+python
+Αντιγραφή
+Επεξεργασία
+def test_api_start(client):
+    """Test if the API starts."""
+    response = client.get('/')
+    assert response.status_code == 200
+    assert response.json == {"message": "Backend is running"}
+Test when no file is uploaded (test_no_file):
+
+This test simulates a scenario where no file is attached to the request. It sends an empty POST request to the /summarize endpoint.
+The expected response should be a 400 status code and a JSON message indicating that no file was attached.
+python
+Αντιγραφή
+Επεξεργασία
+def test_no_file(client):
+    """Test no file reached the server."""
+    response = client.post('/summarize', data={})
+    assert response.json == {"error": "No file attached."}, 400
+Test for invalid file extension (test_invalid_extension):
+
+This test ensures that an invalid file (such as a .txt file) is rejected by the server. It sends a POST request to /summarize with a .txt file attached.
+The expected response should have a 400 status code and an error message saying, "Invalid file type. Please upload a PDF file."
+python
+Αντιγραφή
+Επεξεργασία
+def test_invalid_extension(client):
+    """Test an invalid file type (not PDF) upload."""
+    with open('backend/app/summary.txt', 'rb') as txt:
+        data = {"userfile": (txt, "summary.txt")}
+        response = client.post('/summarize', data=data, content_type='multipart/form-data')
+        assert response.status_code == 400
+        json_data = response.get_json()
+        assert json_data['error'] == 'Invalid file type. Please upload a PDF file.'
+Test a valid PDF file upload (test_extension):
+
+This test ensures that a valid PDF file is uploaded and processed correctly. The generate_test_pdf() function generates a simple PDF file in memory.
+The test sends the PDF file to the /summarize endpoint and expects the server to return a valid summary in the response.
+python
+Αντιγραφή
+Επεξεργασία
+def generate_test_pdf():
+    pdf_buffer = BytesIO()
+    c = canvas.Canvas(pdf_buffer)
+    c.drawString(100, 750, "This is a TEST!!!")
+    c.showPage()
+    c.save()
+    pdf_buffer.seek(0)
+    return pdf_buffer
+
+def test_extension(client):
+    """Test a valid PDF file upload."""
+    pdf_buffer = generate_test_pdf()
+    data = {"userfile": (pdf_buffer, "test.pdf")}
+    response = client.post('/summarize', data=data, content_type='multipart/form-data')
+    assert response.status_code == 200
+    json_data = response.get_json()
+    assert 'summary' in json_data  # Check that a summary is returned
+Test Execution
+Running the Tests:
+
+The tests can be executed locally using pytest. Simply run the following command in your terminal:
+
+bash
+Αντιγραφή
+Επεξεργασία
+pytest
+When the tests are executed, pytest will run through each test case and report the results.
 
 
 
