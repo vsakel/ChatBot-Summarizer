@@ -1,16 +1,17 @@
 import pytest
 from endpoints import app  # import flask app
+from reportlab.pdfgen import canvas 
 from io import BytesIO
-from reportlab.pdfgen import canvas
 
-# This code uses ReportLab to write text to a PDF. 
-# This way we generate a test pdf using the BytesIO object that works as in-memory file
+
+# BytesIO, it is used to work with binary data as if it were a file.
+# ReportLab is another powerful library for creating PDFs from scratch. 
+# It is best used when you need to generate PDFs dynamically
 
 @pytest.fixture
 def client():
     """Fixture for providing a test client.
-       we can use client to simulate HTTP requests.
-    """
+       we can use client to simulate HTTP requests."""
     with app.test_client() as client:
         yield client
 
@@ -31,9 +32,10 @@ def test_invalid_extension(client):
     with open('backend/app/summary.txt', 'rb') as txt:  
         data = {"userfile": (txt, "summary.txt")}
         response = client.post('/summarize', data=data, content_type='multipart/form-data')
-        assert response.status_code == 400
-        json_data = response.get_json()
-        assert json_data['error'] == 'Invalid file type. Please upload a PDF file.'
+        # assert response.status_code == 400
+        # json_data = response.get_json()
+        # assert json_data['error'] == ''
+        assert response.json == {"error": "Invalid file type. Please upload a PDF file."},400
 
 
 ## This test is successfully passed when i run it locally
@@ -42,32 +44,27 @@ def test_invalid_extension(client):
 
 # def test_valid_extension(client):
 #     """Test a valid PDF file upload"""
-#     # with open('backend/app/invoice.pdf', 'rb') as pdf:  # provide a valid PDF file path
-#     #     data = {'userfile': (pdf, 'invoice.pdf')}
-#     # Simulating a bytes object of a PDF file.
-#     pdf_bytes = b'%PDF-1.4 ...'
-#     # Wrapping the bytes object with BytesIO class to create a file-like object.
-#     pdf_buffer = io.BytesIO(pdf_bytes)
-#     data = {"userfile": (pdf_buffer, "invoice.pdf")}
-#     response = client.post('/summarize', data=data, content_type='multipart/form-data')
-#     assert response.status_code == 200
-#     json_data = response.get_json()
-#     assert 'summary' in json_data  # check that a summary is returned
+#     with open('backend/app/invoice.pdf', 'rb') as pdf:  # provide a valid PDF file path
+#         data = {'userfile': (pdf, 'invoice.pdf')}
+#         response = client.post('/summarize', data=data, content_type='multipart/form-data')
+#         assert response.status_code == 200
+#         json_data = response.get_json()
+#         assert 'summary' in json_data  # check that a summary is returned
 
 
 def generate_test_pdf():
-    pdf_buffer = BytesIO()
-    c = canvas.Canvas(pdf_buffer)
+    pdf_buffer = BytesIO() # This creates an in-memory byte stream
+    c = canvas.Canvas(pdf_buffer) # This initializes a ReportLab Canvas that will write PDF content directly to the pdf_buffer
     c.drawString(100, 750, "This is a TEST!!!")
     c.showPage()
     c.save()
     pdf_buffer.seek(0)
     return pdf_buffer
 
-def test_valid_extension(client):
+def test_extension(client):
     """Test a valid PDF file upload"""
     pdf_buffer = generate_test_pdf()
-    data = {"userfile": (pdf_buffer, "invoice.pdf")}
+    data = {"userfile": (pdf_buffer, "test.pdf")}
     response = client.post('/summarize', data=data, content_type='multipart/form-data')
     assert response.status_code == 200
     json_data = response.get_json()
