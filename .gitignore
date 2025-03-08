@@ -8,4 +8,4 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-frontend/src/UploadPageExplained
+frontend/src/UploadPageExplained.js
