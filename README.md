@@ -198,9 +198,10 @@ Explaination of file `.github/workflows/ci.yml`.
 - Uses the latest version of the code from the repository using `actions/checkout@v3`.
 - Installs Python 3.10 environment using `actions/setup-python@v4`.
 - Installs the required dependencies listed in `backend/app/requirements.txt`.
-- Creates a dynamically .env in CI workflow to store the OpenAI API key:
+- Creates a dynamically .env in CI workflow to store the OpenAI API key
   - Uses **Github Secrets** to store sensitive information, that should not be exposed.
-  - The OPENAI_API_KEY secret is retrieved from GitHub Secrets and written to a .env file located in the backend/app folder.
+  - The OPENAI_API_KEY secret is retrieved from GitHub Secrets and written to a .env file located in the `backend/app` folder using the following command:
+ 
     `echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > backend/app/.env`.
 - Runs the tests located in the `backend/app` directory.
   - Uses **pytest** library to run the defined test cases, ensuring that the backend works as expected.
