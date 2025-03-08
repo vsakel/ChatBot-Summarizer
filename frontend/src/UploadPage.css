@@ -4,7 +4,7 @@
   background-color:lightgrey;
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  max-width: 400px; /* Maximum width of 600px */
+  max-width: 400px; /* Maximum width of 400px */
   min-height: 100px; 
 }
 
@@ -29,30 +29,30 @@
 
 .upload-container button {
   padding: 12px 20px; /* Button padding */
-  background-color: rgb(16, 81, 133); /* Green button */
-  color: white; /* White text */
+  background-color: rgb(16, 81, 133); 
+  color: white; 
   font-size: 16px; /* Button text size */
   border: none; /* Remove default button border */
-  border-radius: 4px; /* Rounded corners */
+  border-radius: 4px; 
   cursor: pointer; /* Change cursor on hover */
 }
 
 .upload-container button:hover {
-  background-color: #171a18; /* Darker green when button is hovered */
+  background-color: #171a18; 
 }
 
 .message-container {
   margin: auto; 
   background-color:skyblue;
-  max-width: 500px; /* Maximum width of 600px */
+  max-width: 500px; 
   text-align: center;
   word-wrap: break-word;   /* Wrap long words to avoid overflow */
    
 }
 
 .message-container p {
-  color: black; /* Red color for message */
-  font-size: 18px; /* Slightly smaller text */
+  color: black; 
+  font-size: 18px; 
   line-height: 1.6;  
 
 }

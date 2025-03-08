@@ -1,8 +1,7 @@
-/* MarkdownBox.css */
 .markdown-container {
-    background-color: white; /* Light background for readability */
-    border-radius: 8px;        /* Rounded corners */
-    padding: 20px;             /* Add some padding to the box */
+    background-color: white; 
+    border-radius: 8px;        
+    padding: 20px;             
     width: 70%;
     margin: 20px auto;         /* Center the box horizontally */
     line-height: 1.6;          /* Improve line spacing for better readability */
