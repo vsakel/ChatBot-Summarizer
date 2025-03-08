@@ -237,9 +237,9 @@ These tests use the **pytest** library and its **fixtures** to simulate HTTP req
 
 ### Difference between 4 and 5 test cases
 
--**test_extension**: This test generates a PDF from scratch using the ReportLab library and stores it in memory (as byte stream with BytesIO). The in-memory PDF is then sent to the server for processing.
+- **test_extension**: This test generates a PDF from scratch using the ReportLab library and stores it in memory (as byte stream with BytesIO). The in-memory PDF is then sent to the server for processing.
 
--**test_valid_extension**: This test uses a real PDF file that is stored on disk. It uploads this actual PDF file to the server and checks if the server processes it correctly.
+- **test_valid_extension**: This test uses a real PDF file that is stored on disk. It uploads this actual PDF file to the server and checks if the server processes it correctly.
 
 
 
