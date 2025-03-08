@@ -32,10 +32,8 @@ def test_invalid_extension(client):
     with open('backend/app/summary.txt', 'rb') as txt:  
         data = {"userfile": (txt, "summary.txt")}
         response = client.post('/summarize', data=data, content_type='multipart/form-data')
-        # assert response.status_code == 400
-        # json_data = response.get_json()
-        # assert json_data['error'] == ''
         assert response.json == {"error": "Invalid file type. Please upload a PDF file."},400
+
 
 
 # This test uses a real PDF file that is stored on disk. It uploads this actual PDF file to the server and checks if the server processes it correctly.
@@ -57,6 +55,7 @@ def generate_test_pdf():
     c.save()
     pdf_buffer.seek(0)
     return pdf_buffer
+
 
 # This test generates a PDF from scratch using the ReportLab library and stores 
 # it in memory (as byte stream with BytesIO). The in-memory PDF is then sent to the server for processing.
