@@ -7,11 +7,11 @@ You can upload your PDF files, and the system will generate clear, concise summa
 ## Frontend Setup
 This frontend is built with **React.js** and **Vite**.
 
-It consists of key components such as:
+The key components are:
 - **main.jsx**: The entry point of our React application. It is responsible for rendering the top-level component, App, into the DOM.
 - **App.jsx**: The core component of the application that acts as a container for the two main pages, managing the routing between them.
-- **HomePage.jsx**: Displays the Home page, which is the root page of the application.
-- **UploadPage.jsx**: Displays the Upload page, where users can upload their files. It handles the file upload process and displays the generated summary.
+- **HomePage.jsx**: Displays the Home page, which is the root page of application.
+- **UploadPage.jsx**: Displays the Upload page, where users can upload their files. It handles the file upload process and renders the generated summary.
 - **NavigationBar.jsx**: The navigation bar, which allows users to move between pages (Home and Upload).
 - **Summary.jsx**: Renders the generated summary in Markdown format.
 
@@ -29,7 +29,7 @@ You should have the following installed:
 3) Install depedencies: `npm install`
 
 ### Running the Application
-- Start the development server: `npm run dev`  
+- Start the development server: `npm run dev`
  - **Application runs on http://localhost:5173/**
 
 ## API Documentation
@@ -42,7 +42,7 @@ This section provides details about the API endpoints used in the ChatBot Summar
   - The endpoint checks if the backend is running and respond to a GET request.
    
 - **Summarization Endpoint** (POST /summarize)
-  - Accepts POST requests at http://localhost:5000/summarize
+  - Accepts POST requests at http://localhost:5000/summarize.
   - The endpoint allow clients to send a POST request (upload a PDF), and the endpoint will process it and return the generated summary.
 
 ### Summarization Endpoint Functionality
@@ -58,7 +58,7 @@ This section provides details about the API endpoints used in the ChatBot Summar
    - Unexpected server error.
  
 ### Additional Details
-- Cross Origin Resource Sharing (CORS), is enabled to allow frontend receive responses from backend enpdpoint.
+- Cross Origin Resource Sharing (CORS) is enabled to allow frontend to receive responses from backend enpdpoint.
 - Pymupdf4llm is a popular library for parsing PDF files and enabling efficient document processing with LLMs.
 - Uploaded files are temporarily stored in the backend, because the pymupdf4llm library requires a file path to process the PDF.
 - We parse the PDF into Markdown format, because it preserves the hierarchical document's structure, which enhances the model's ability to understand the content.
@@ -71,7 +71,7 @@ You should have the following installed:
 - Git (to clone repository)
 
 ### Installation
-1) Clone the repository (if you haven't cloned it)
+1) Clone the repository (if you haven't cloned it).
 2) Move to backend folder: `cd backend`
 3) Create a virtual environment: `python -m venv virtual_env`
 4) Activate a virtual environment: `.\venv\Scripts\activate`
@@ -116,7 +116,7 @@ We integrate the LLM using the followed pipeline:
       Highlight the points you think most important. 
       If document contains unclear information highlight it, but avoid making assumptions.
       Respond in markdown.
-   - Also we declare a user prompt that tells the model to summarize a specific document
+   - Also we declare a user prompt that tells the model to summarize a specific document.
   
    - Our **user prompt**: `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
    
@@ -124,7 +124,7 @@ We integrate the LLM using the followed pipeline:
    - Augmented prompt, combines parsed document text with the user prompt.
      
 5. Sending the augmented prompt to GPT-4 model for processing.
-   - We **sent the context to API endpoint** of model, using the openai.chat.completions.create endpoint.
+   - We **sent the context to API endpoint** of model, using the `openai.chat.completions.create` method.
      
 6. **Extracting** the generated **summary** from the API's response.
 
@@ -192,13 +192,13 @@ This project uses a CI pipeline, set up with **GitHub Actions** to automate the 
 
 Explaination of file `.github/workflows/ci.yml`.
 
-- Triggered on every push to the main branch.
+- Triggers on every push to the main branch.
 - Defines a job called test-backend, which is responsible for testing the backend service.
-  - This job is run on an ubuntu-latest virtual environment.
-- Uses the latest version of the code from the repository using `actions/checkout@v3`.
+  - This job runs on ubuntu virtual environment.
+- Utilize the latest version of the code from the repository using `actions/checkout@v3`.
 - Installs Python 3.10 environment using `actions/setup-python@v4`.
 - Installs the required dependencies listed in `backend/app/requirements.txt`.
-- Creates a dynamically .env in CI workflow to store the OpenAI API key.
+- Creates a dynamically .env file in CI workflow to store the OpenAI API key.
   - Uses **Github Secrets** to **store sensitive information**, that should not be exposed.
   - The OPENAI_API_KEY secret is retrieved from GitHub Secrets and written to a .env file located in the `backend/app` folder.
 - Runs the tests located in the `backend/app` folder.
@@ -217,32 +217,38 @@ It allows us to send requests to the backend without actually running a server.
 
 ### Test Cases
 
-The following Test Cases were developed, to ensure that the backend handles file uploads and returning proper responses.
+The following test cases were implemented to ensure that the backend handles file uploads and returning proper responses.
 These tests use the **pytest** library and its **fixtures** to simulate HTTP requests to the Flask backend.
 
 
-1. **test_api_start**
+1. **test_api_start(client)**
 - This test ensures that the API is running by sending a GET request to the root endpoint (/).
-- The expected response should have a status code of 200 and `{"message": "Backend is running"}`.
-2. **test_no_file**
+- The expected response should have a status code of 200 and return the message `{"message": "Backend is running"}`.
+2. **test_no_file(client)**
 - This test checks the condition where no file reaching the server.
 - It sending an empty POST request to the /summarize endpoint of backend.
 - The expected response should have a 400 status code and return the message `{"error": "No file attached."}`.
-3. **test_invalid_extension**
+3. **test_invalid_extension(client)**
 - This test ensures that an invalid file (.txt file) is not processed by the server.
-- It sends a POST request to /summarize with a .txt file attached.
+- It sends a POST request to /summarize endpoint with a .txt file attached.
 - The expected response should have a 400 status code and return the message  `{"error":"Invalid file type. Please upload a PDF file."}`
 
-4 and 5. **test_extension** and **test_valid_extension**
+4 and 5. **test_extension(client)** and **test_valid_extension(client)**
 - These tests check that a valid PDF file is uploaded and processed correctly.
 - Both tests send the PDF file to the /summarize endpoint and expect the server to return summary as response.
 
 
 ### Difference between 4 and 5 test cases
 
-- **test_extension**: This test generates a PDF from scratch using the ReportLab library and stores it in memory (as byte stream with BytesIO). The in-memory PDF is then sent to the server for processing.
+- **test_extension**: This test generates a PDF from scratch using the ReportLab library and stores it in memory (as byte stream with BytesIO). In memory stored PDF is then sent to the server for processing.
 
 - **test_valid_extension**: This test uses a real PDF file that is stored on disk. It uploads this actual PDF file to the server and checks if the server processes it correctly.
+
+### Running the Tests Locally
+
+To run the test cases, we will run `pytest` command, in the root project directory.
+
+
 
 
 
