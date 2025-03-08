@@ -26,7 +26,7 @@ You should have the following installed:
 ### Installation
 1) Clone the repository: `git clone https://github.com/vsakel/ChatBot-Summarizer.git`
 2) Move to frontend folder: `cd frontend`
-3) Install depedencies: `npm install`
+3) Install dependencies: `npm install`
 
 ### Running the Application
 - Start the development server: `npm run dev`
@@ -75,7 +75,7 @@ You should have the following installed:
 2) Move to backend folder: `cd backend`
 3) Create a virtual environment: `python -m venv virtual_env`
 4) Activate a virtual environment: `.\venv\Scripts\activate`
-5) Install depedencies: `pip install -r app\requirements.txt`
+5) Install dependencies: `pip install -r app\requirements.txt`
    
 
 ### Running the Application
