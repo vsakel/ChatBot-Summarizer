@@ -198,7 +198,7 @@ Explaination of file `.github/workflows/ci.yml`.
 - Uses the latest version of the code from the repository using `actions/checkout@v3`.
 - Installs Python 3.10 environment using `actions/setup-python@v4`.
 - Installs the required dependencies listed in `backend/app/requirements.txt`.
-- Runs the tests located in the `backend/app`directory.
+- Runs the tests located in the `backend/app` directory.
   - Uses **pytest** library to run the defined test cases, ensuring that the backend works as expected.
 
 
