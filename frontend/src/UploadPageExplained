@@ -1,93 +1,93 @@
-import React, { useState } from 'react';
-import Summary from './Summary';
-import './UploadPage.css';
+// import React, { useState } from 'react';
+// import Summary from './Summary';
+// import './UploadPage.css';
 
-function UploadPage() {
-  const [file, setFile] = useState(null);  // To store the selected file
-  const [summary, setSummary] = useState("");  // To store the summary of file returned from backend, This ensures React updates and properly displays the summary when available. 
-  const [errorMsg, setErrorMsg] = useState("");
+// function UploadPage() {
+//   const [file, setFile] = useState(null);  // To store the selected file
+//   const [summary, setSummary] = useState("");  // To store the summary of file returned from backend, This ensures React updates and properly displays the summary when available. 
+//   const [errorMsg, setErrorMsg] = useState("");
 
-//   This function is triggered when the user selects a file
-  const selectFile = (event) => {
-    const userFile = event.target.files[0]; // is the file that the user selects through the file input.
-    if (userFile) {
-      setFile(userFile);
-      setErrorMsg("");
-      setSummary("");
-    }
-  };
+// //   This function is triggered when the user selects a file
+//   const selectFile = (event) => {
+//     const userFile = event.target.files[0]; // is the file that the user selects through the file input.
+//     if (userFile) {
+//       setFile(userFile);
+//       setErrorMsg("");
+//       setSummary("");
+//     }
+//   };
     
-//   Triggered when the user clicks the "Upload" button
-  const uploadFile = async (event) => {
-    event.preventDefault(); // stops the page from refreshing (which is the default behavior of forms).
-    // If the page reloads, React will re-render the components from scratch, and any local state 
-    // (like the file and error message states) will be reset. This is why we use event.preventDefault() 
-    // in React when handling form submissions, to prevent the page from reloading and losing the state.
-    if (!file) {
-      setErrorMsg("Please select a file.");
-      return;
-    }
-    const formData = new FormData(); // Create FormData to send the file as form data
-    formData.append('userfile', file);  // The field name "userfile" should match what your backend expects   
-    // The try and catch blocks are used to handle errors in JavaScript, 
-    // especially when dealing with asynchronous code, such as fetch. 
-    // They allow you to catch exceptions that might occur during the 
-    // execution of a block of code and handle them in a controlled way, 
-    // rather than letting the program crash or behave unpredictably.  
+// //   Triggered when the user clicks the "Upload" button
+//   const uploadFile = async (event) => {
+//     event.preventDefault(); // stops the page from refreshing (which is the default behavior of forms).
+//     // If the page reloads, React will re-render the components from scratch, and any local state 
+//     // (like the file and error message states) will be reset. This is why we use event.preventDefault() 
+//     // in React when handling form submissions, to prevent the page from reloading and losing the state.
+//     if (!file) {
+//       setErrorMsg("Please select a file.");
+//       return;
+//     }
+//     const formData = new FormData(); // Create FormData to send the file as form data
+//     formData.append('userfile', file);  // The field name "userfile" should match what your backend expects   
+//     // The try and catch blocks are used to handle errors in JavaScript, 
+//     // especially when dealing with asynchronous code, such as fetch. 
+//     // They allow you to catch exceptions that might occur during the 
+//     // execution of a block of code and handle them in a controlled way, 
+//     // rather than letting the program crash or behave unpredictably.  
 
-    // fetch only throws errors for network issues or if the request is 
-    // never completed (e.g., the server is unreachable). 
-    // It doesn't throw an error for unsuccessful HTTP status codes like 400 or 500.
-    try {
-          // Send the file to the Flask backend
-      const response = await fetch('http://localhost:5000/upload_pdf', {
-        method: 'POST',
-        body: formData,  // Attach the file in the request body
-      });
+//     // fetch only throws errors for network issues or if the request is 
+//     // never completed (e.g., the server is unreachable). 
+//     // It doesn't throw an error for unsuccessful HTTP status codes like 400 or 500.
+//     try {
+//           // Send the file to the Flask backend
+//       const response = await fetch('http://localhost:5000/upload_pdf', {
+//         method: 'POST',
+//         body: formData,  // Attach the file in the request body
+//       });
           
-          // Check if the upload was successful
-      if (response.ok) {
-        console.log('File uploaded successfully!');
-        setErrorMsg('File uploaded successfully!');
-        const data = await response.json();
-        setSummary(data.summary);
-        setFile(null);
-      } 
-      // The else block checks the response status returned by the server. It is not related to the network error, 
-      // but rather the logic of the server's response after successfully receiving the request.
-      // it handles HTTP errors where the server responds, but something went wrong on the server side, 
-      // or the request was invalid in some way
-      // 404 status code: This status means that the server could not find the requested resource. For example, 
-      // the URL or endpoint you tried to access does not exist on the server
-      else {
-        console.log("Failed to upload the file. Status:",response.status);
-        setErrorMsg("Failed to upload the file");
-      }
-      } catch (err) {
-        console.log(err);
-        setErrorMsg("An error occured.");
-        setSummary("this is a nice day"); // check
-      } 
-    }
-  return (
-    <div>
-    <div className='upload-container'>
-      <form onSubmit={uploadFile}>
-        <input 
-          className='user-file'
-          type="file" //Specifies that this input field is for selecting files.
-          onChange={selectFile} 
-          accept=".pdf, .csv"
-        />
-        <button type="submit">Upload</button>
-        {errorMsg && <p>{errorMsg}</p>} 
-      </form>
-    </div>
-    <Summary summary={summary}/>
-    </div>
-  );
+//           // Check if the upload was successful
+//       if (response.ok) {
+//         console.log('File uploaded successfully!');
+//         setErrorMsg('File uploaded successfully!');
+//         const data = await response.json();
+//         setSummary(data.summary);
+//         setFile(null);
+//       } 
+//       // The else block checks the response status returned by the server. It is not related to the network error, 
+//       // but rather the logic of the server's response after successfully receiving the request.
+//       // it handles HTTP errors where the server responds, but something went wrong on the server side, 
+//       // or the request was invalid in some way
+//       // 404 status code: This status means that the server could not find the requested resource. For example, 
+//       // the URL or endpoint you tried to access does not exist on the server
+//       else {
+//         console.log("Failed to upload the file. Status:",response.status);
+//         setErrorMsg("Failed to upload the file");
+//       }
+//       } catch (err) {
+//         console.log(err);
+//         setErrorMsg("An error occured.");
+//         setSummary("this is a nice day"); // check
+//       } 
+//     }
+//   return (
+//     <div>
+//     <div className='upload-container'>
+//       <form onSubmit={uploadFile}>
+//         <input 
+//           className='user-file'
+//           type="file" //Specifies that this input field is for selecting files.
+//           onChange={selectFile} 
+//           accept=".pdf, .csv"
+//         />
+//         <button type="submit">Upload</button>
+//         {errorMsg && <p>{errorMsg}</p>} 
+//       </form>
+//     </div>
+//     <Summary summary={summary}/>
+//     </div>
+//   );
 
-}
+// }
 
-export default UploadPage;
+// export default UploadPage;
 
