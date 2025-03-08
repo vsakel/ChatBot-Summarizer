@@ -1,8 +1,8 @@
 # ChatBot Summarizer
 
-An AI-powered application that simplifies document processing. 
+An AI-powered application that simplifies PDF document processing. 
 
-You can upload your files, and the system will generate clear, concise summaries to help you better understand your documents.
+You can upload your PDF files, and the system will generate clear, concise summaries to help you better understand your documents.
 
 ## Frontend Setup
 This frontend is built with **React.js** and **Vite**.
@@ -37,19 +37,29 @@ You should have the following installed:
 This section provides details about the API endpoints used in the ChatBot Summarizer backend, built with **Flask**.
 
 ### Endpoints implementation:
-- Test Endpoint (GET /) – Checks if the backend is running
-- Summarization Endpoint (POST /summarize) – Uploads a **PDF document**, processes it, and returns the generated summary.
+- **Test Endpoint** (GET /)
+  - Accesible at http://localhost:5000/
+  - The endpoint checks if the backend is running and respond to a GET request.
+   
+- **Summarization Endpoint** (POST /summarize)
+  - Accepts POST requests at http://localhost:5000/summarize
+  - The endpoint allow clients to send a POST request (upload a PDF), and the endpoint will process it and return the generated summary.
 
-  **Summarization Endpoint Logic**:
-  - User uploads a PDF file.
-  - The document is stored temporarily on the backend server, for processing.
-  - The document is processed and parsed, using pymupdf4llm library.
-  - The parsed document sent to OpenAI's LLM for summarization.
-  - The generated summary is returned, to frontend, as a JSON response.
-  - The temporary file is deleted after processing is complete.
+### Summarization Endpoint Functionality
+1. The user uploads a PDF file.
+2. The document is temporarily stored on the backend server, for processing.
+3. It is processed and parsed, using pymupdf4llm library.
+4. The parsed document sent to OpenAI's LLM for summarization.
+5. The generated summary is returned, to frontend, as a JSON response.
+6. The temporary file is deleted after processing is complete.
+7. Endpoint efficiently handles errors, including:
+   - Missing file (No file attached).
+   - Invalid file type (only PDF files allowed).
+   - Unexpected server error.
  
 ### Additional Details
 - Cross Origin Resource Sharing (CORS), is enabled to allow frontend receive responses from backend enpdpoint.
+- Pymupdf4llm is a popular library for parsing PDF files and enabling efficient document processing with LLMs.
 - Uploaded files are temporarily stored in the backend, because the pymupdf4llm library requires a file path to process the PDF.
 - We parse the PDF into Markdown format, because it preserves the hierarchical document's structure, which enhances the model's ability to understand the content.
 
@@ -77,7 +87,12 @@ You should have the following installed:
 
 This section provide details about the integration and usage of an OpenAI' s model, in our backend.
 
-We use OpenAI's GPT-4 model (especially we use gpt-4o-mini), which is hosted in OpenAI's cloud servers, to analyze and summarize tax-related uploaded documents.
+We use OpenAI's GPT-4 model (specifically GPT-4o mini), which is hosted on OpenAI's cloud servers, to analyze and summarize uploaded tax-related documents.
+
+### LLM Model
+
+We use **GPT-4o mini**, which is designed to balance performance with cost efficiency. It provides powerful AI solutions at a lower price point than the GPT-4o model.
+
 
 ### Integration Pipeline
 We integrate the LLM using the followed pipeline:
@@ -92,7 +107,7 @@ We integrate the LLM using the followed pipeline:
 3. Declaring system and user prompts.
    - We declare a system prompt that provide some instructions to guide the model to the desired output.
   
-     Our **system prompt**:
+   - Our **system prompt**:
    
       ```
       You are an assistant that analyze tax related documents and generate a short summary.
@@ -103,7 +118,7 @@ We integrate the LLM using the followed pipeline:
       Respond in markdown.
    - Also we declare a user prompt that tells the model to summarize a specific document
   
-     Our **user prompt**: `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
+   - Our **user prompt**: `You are looking at a document. The content of this document is as follows. Please provide a short summary.`
    
 4. Creating **augmented prompt**.
    - Augmented prompt, combines parsed document text with the user prompt.
@@ -119,6 +134,33 @@ We integrate the LLM using the followed pipeline:
 This project uses **Docker Compose** tool to build a **multi-container application** with frontend and backend services as separate containers, that communicate within a Docker network.
 
 Follow these steps to containirize frontend and backend services.
+
+### Port Mapping
+In the **docker-compose.yml**, the **ports** of services are **mapped from containers to host machine**.
+
+To access frontend container from host machine , we modify **vite.config.js** as above:
+
+```
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    watch: {
+      usePolling: true,
+    },
+    host: true, // without this we cant reach the container from the outside world
+    strictPort: true,
+    port: 5173, 
+  }
+});
+```
+
+To access backend container, we need to include `--host=0.0.0.0` when running Flask (`flask run --host=0.0.0.0 `).
+
+So it listen on any other network the container is connected to. 
 
 ### Prerequisites
 You should have installed:
@@ -139,7 +181,7 @@ Once the containers are up and running, we can access the services at the follow
 - Frontend: http://localhost:5173
 - Backend: http://localhost:5000
 
-### Stopping the containers:
+### Stop the containers
 To stop the containers, we run: `docker-compose down`
 
   
