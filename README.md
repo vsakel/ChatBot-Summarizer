@@ -199,13 +199,24 @@ Explaination of file `.github/workflows/ci.yml`.
 - Installs Python 3.10 environment using `actions/setup-python@v4`.
 - Installs the required dependencies listed in `backend/app/requirements.txt`.
 - Runs the tests located in the `backend/app`directory.
-  - Uses **Pytest** library to run the defined test cases, ensuring that the backend works as expected.
+  - Uses **pytest** library to run the defined test cases, ensuring that the backend works as expected.
 
+
+
+### Pytest Fixtures
+
+Pytest fixtures are functions that provide a fixed baseline for tests. They allow for reusability, by sharing common set up across multiple tests.
+Test functions can use them to perform actions.
+
+We implemented the **client fixture** that simulate HTTP requests to the Flask backend. 
+It allows us to send GET and POST requests to the backend without actually running a server.
 
 
 ### Test Cases
 
 The following Test Cases were developed, to ensure that the backend handles file uploads and returning proper responses.
+These tests use the **pytest** library and its **fixtures** to simulate HTTP requests to the Flask backend.
+
 
 1. **test_api_start**
 - This test ensures that the API is running by sending a GET request to the root endpoint (/).
@@ -219,17 +230,17 @@ The following Test Cases were developed, to ensure that the backend handles file
 - It sends a POST request to /summarize with a .txt file attached.
 - The expected response should have a 400 status code and return the message  `{"error":"Invalid file type. Please upload a PDF file."}`
 
-4 and 5.**test_extension** and **test_valid_extension**
-- These tests ensure that a valid PDF file is uploaded and processed correctly.
-- These tests send the PDF file to the /summarize endpoint and expect the server to return a valid summary in the response.
+4 and 5. **test_extension** and **test_valid_extension**
+- These tests check that a valid PDF file is uploaded and processed correctly.
+- Both tests send the PDF file to the /summarize endpoint and expect the server to return summary as response.
 
 
-  ### Difference between 4 and 5 test cases
+### Difference between 4 and 5 test cases
 
- test_extension generate a PDF from scratch and store it in memory so it can send to server
- test_valid_extension it uses a real PDF that is stored in disk.
+**test_extension**: This test generates a PDF from scratch using the ReportLab library and stores it in memory (as byte stream with BytesIO). The in-memory PDF is then sent to the server for processing.
 
- This two cases work locally but failed in github actions
+**test_valid_extension**: This test uses a real PDF file that is stored on disk. It uploads this actual PDF file to the server and checks if the server processes it correctly.
+
 
 
 
