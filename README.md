@@ -200,8 +200,8 @@ Explaination of file `.github/workflows/ci.yml`.
 - Installs the required dependencies listed in `backend/app/requirements.txt`.
 - Creates a dynamically .env in CI workflow to store the OpenAI API key.
   - Uses **Github Secrets** to **store sensitive information**, that should not be exposed.
-  - The OPENAI_API_KEY secret is retrieved from GitHub Secrets and written to a .env file located in the `backend/app`.
-- Runs the tests located in the `backend/app` directory.
+  - The OPENAI_API_KEY secret is retrieved from GitHub Secrets and written to a .env file located in the `backend/app` folder.
+- Runs the tests located in the `backend/app` folder.
   - Uses **pytest** library to run the defined test cases, ensuring that the backend works as expected.
 
 
