@@ -1,8 +1,8 @@
 # ChatBot Summarizer
 
-An AI-powered application that simplifies document processing. 
+An AI-powered application that simplifies PDF document processing. 
 
-You can upload your files, and the system will generate clear, concise summaries to help you better understand your documents.
+You can upload your PDF files, and the system will generate clear, concise summaries to help you better understand your documents.
 
 ## Frontend Setup
 This frontend is built with **React.js** and **Vite**.
