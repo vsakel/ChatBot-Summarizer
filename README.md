@@ -11,7 +11,7 @@ The key components are:
 - **main.jsx**: The entry point of our React application. It is responsible for rendering the top-level component, App, into the DOM.
 - **App.jsx**: The core component of the application that acts as a container for the two main pages, managing the routing between them.
 - **HomePage.jsx**: Displays the Home page, which is the root page of application.
-- **UploadPage.jsx**: Displays the Upload page, where users can upload their files. It handles the file upload process and displays the generated summary.
+- **UploadPage.jsx**: Displays the Upload page, where users can upload their files. It handles the file upload process and renders the generated summary.
 - **NavigationBar.jsx**: The navigation bar, which allows users to move between pages (Home and Upload).
 - **Summary.jsx**: Renders the generated summary in Markdown format.
 
