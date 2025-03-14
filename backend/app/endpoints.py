@@ -21,8 +21,8 @@ from dotenv import load_dotenv
 
 dotenv_path = "../../.env"
 load_dotenv(dotenv_path,override=True)
-cors_origin_local = os.getenv('CORS_ORGIGIN_LOCAL')
-cors_origin_docker = os.getenv('CORS_ORGIGIN_DOCKER')
+cors_origin_local = os.getenv('CORS_ORIGIN_LOCAL')
+cors_origin_docker = os.getenv('CORS_ORIGIN_DOCKER')
 
 app = Flask(__name__)    
 
