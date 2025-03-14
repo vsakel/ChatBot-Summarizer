@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
 from llm_api import generate_summary
-from parse import parse_file
+from dotenv import load_dotenv
 
 # This Flask module provides an API for summarizing PDF files using an external 
 # function (generate_summary) that integrates an LLM. 
@@ -16,18 +16,24 @@ from parse import parse_file
 # we enable CORS so frontend can get the response of backend enpoint.
 # we enable the HTTP requests when we reach the endpoint from localhost 
 # and when we reach from frontend container using the internal DNS name of service == chatbot_ui
+# we will make CORS configuration dynamic with a .env file so we can update the allowed origins
+# without modifying the code
 
+dotenv_path = "../../.env"
+load_dotenv(dotenv_path,override=True)
+cors_origin_local = os.getenv('CORS_ORGIGIN_LOCAL')
+cors_origin_docker = os.getenv('CORS_ORGIGIN_DOCKER')
 
 app = Flask(__name__)    
 
 
-CORS(app, resources={r"/summarize": {"origins": ["http://localhost:5173", "http://chatbot_ui:5173"]}})
+CORS(app, resources={r"/summarize": {"origins": [cors_origin_local, cors_origin_docker]}})
 # CORS(app)
 
 
 # we need to store the file so we can use pymupdf4llm library to for parsing
 app.config['UPLOADER_FOLDER'] = 'uploads/'
-if not os.path.exists(app.config['UPLOADER_FOLDER'] ):
+if not os.path.exists(app.config['UPLOADER_FOLDER']):
     os.makedirs(app.config['UPLOADER_FOLDER'] )
 
 @app.route('/', methods=['GET'])
@@ -38,6 +44,8 @@ def test():
 def summarize():
      # try-except block captures errors that happen during the execution of route
     try:
+        # ensure that the file_path variable exists, but it is initially set to None
+        # so i dont have problems if an error occurs before file is saved
         file_path = None
 
         # The file may not properly attach due to a network issue, file corruption, or browser bugs.

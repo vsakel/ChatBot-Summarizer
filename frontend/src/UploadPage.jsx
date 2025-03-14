@@ -55,7 +55,8 @@ function UploadPage() {
     formData.append('userfile', file); 
     
     try {
-      const response = await fetch('http://localhost:5000/summarize', {
+      const apiUrl = import.meta.env.VITE_SUMMARIZE_ENDPOINT;
+      const response = await fetch(apiUrl, {
         method: 'POST',
         body: formData
       });
@@ -82,7 +83,6 @@ function UploadPage() {
     if (summary) {
       setMessage("Your summary is here!");
       setIsReady(true);
-      return;
     }
     else
       setMessage("Please select and upload a file.");
