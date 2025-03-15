@@ -21,8 +21,8 @@ from dotenv import load_dotenv
 
 dotenv_path = "../../.env"
 load_dotenv(dotenv_path,override=True)
-cors_origin_local = os.getenv('CORS_ORIGIN_LOCAL')
-cors_origin_docker = os.getenv('CORS_ORIGIN_DOCKER')
+cors_origin_local = os.getenv('CORS_ORIGIN_LOCAL','http://localhost:5173')
+cors_origin_docker = os.getenv('CORS_ORIGIN_DOCKER','http://chatbot_ui:5173')
 
 app = Flask(__name__)    
 
