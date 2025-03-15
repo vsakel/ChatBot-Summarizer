@@ -21,11 +21,10 @@ from dotenv import load_dotenv
 
 dotenv_path = "../../.env"
 load_dotenv(dotenv_path,override=True)
-cors_origin_local = os.getenv('CORS_ORIGIN_LOCAL')
+cors_origin_local = os.getenv('CORS_ORIGIN_LOCAL','http://localhost:5173')
 cors_origin_docker = os.getenv('CORS_ORIGIN_DOCKER')
 
 app = Flask(__name__)    
-
 
 CORS(app, resources={r"/summarize": {"origins": [cors_origin_local, cors_origin_docker]}})
 # CORS(app)
@@ -73,5 +72,5 @@ def summarize():
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
 
-# if __name__ == '__main__':
-#     app.run(debug=True,port=5000)
+if __name__ == '__main__':
+    app.run(debug=True,port=5000)
