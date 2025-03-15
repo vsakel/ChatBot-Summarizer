@@ -22,11 +22,14 @@ jobs:
         run: |
           pip install -r backend/app/requirements.txt
           
-      - name: Create .env file with API key
+      - name: Create root .env file with CORS variables
         run: |
-          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > backend/app/.env
           echo "CORS_ORIGIN_DOCKER=${{ secrets.CORS_ORIGIN_DOCKER }}" > .env
           echo "CORS_ORIGIN_LOCAL=${{ secrets.CORS_ORIGIN_LOCAL }}" >> .env
+
+      - name: Create app-specific .env file with API key
+        run: |
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > backend/app/.env
 
       - name: Run tests with pytest
         run: |
