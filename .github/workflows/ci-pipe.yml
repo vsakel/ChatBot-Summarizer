@@ -24,8 +24,8 @@ jobs:
           
       - name: Create root .env file with CORS variables
         run: |
-          echo "CORS_ORIGIN_DOCKER=${{ secrets.CORS_ORIGIN_DOCKER }}" > .env
-          echo "CORS_ORIGIN_LOCAL=${{ secrets.CORS_ORIGIN_LOCAL }}" >> .env
+          echo "CORS_ORIGIN_DOCKER=${{ secrets.CORS_ORIGIN_DOCKER }}" > ./.env
+          echo "CORS_ORIGIN_LOCAL=${{ secrets.CORS_ORIGIN_LOCAL }}" >> ./.env
 
       - name: Create app-specific .env file with API key
         run: |
